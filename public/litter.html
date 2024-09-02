@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blackspot Current Location</title>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .dropzone {
+      border: 2px dashed #ccc;
+      padding: 20px;
+      width: fit-content;
+      cursor: pointer;
+    }
+    .img_text {
+      text-align: center;
+    }
+    aside {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>BlackSpot Current Location (Simulated Values)</h1>
+  <p>Latitude: <span id="latitude">**Placeholder**</span></p>
+  <p>Longitude: <span id="longitude">**Placeholder**</span></p>
+  <p>Accuracy: <span id="accuracy">**Placeholder**</span> meters</p>
+
+  <section class="container">
+    <div class="dropzone">
+      <input type="file" id="fileInput" />
+      <p class="img_text">Click to take a picture...</p>
+    </div>
+    <aside>
+      <h4>Image</h4>
+      <ul id="fileList"></ul>
+    </aside>
+  </section>
+
+  <script>
+    // Simulate getting location data (replace with your actual logic)
+    document.getElementById("latitude").textContent = 40.7128;  // Replace with real latitude
+    document.getElementById("longitude").textContent = -74.0059; // Replace with real longitude
+    document.getElementById("accuracy").textContent = 50;       // Replace with real accuracy
+
+    // Functionality for handling files would need additional scripting (not included)
+  </script>
+</body>
+</html>
