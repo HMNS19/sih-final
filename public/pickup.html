@@ -1,110 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Schedule A Pickup, NOW!</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-      }
-      
-      h1 {
-        text-align: center;
-        margin-bottom: 20px;
-      }
-      
-      form {
-        max-width: 500px;
-        margin: 40px auto;
-        padding: 20px;
-        border: 1px solid #ddd;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
-      
-      label {
-        display: block;
-        margin-bottom: 10px;
-      }
-      
-      input[type="text"], input[type="email"], input[type="tel"], textarea {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 20px;
-        border: 1px solid #ccc;
-      }
-      
-      input[type="submit"] {
-        background-color: #4CAF50;
-        color: #fff;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-      }
-      
-      input[type="submit"]:hover {
-        background-color: #3e8e41;
-      }
-      
-      select {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 20px;
-        border: 1px solid #ccc;
-      }
-      
-      h2, h3 {
-        margin-top: 20px;
-      }
-      #pickup {
-  background-color: #6eff69; /* pink button color */
-  color: #fff; /* white text color */
-  border: none; /* no border */
-  padding: 10px 20px; /* padding for a nice size */
-  font-size: 16px; /* font size */
-  cursor: pointer; /* pointer cursor on hover */
-  margin: 0 10px; /* margin for some space around the button */
-  border-radius: 10px; /* rounded corners */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* slight shadow */
-}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Schedule A Pickup, NOW!</title>
+  <link rel="stylesheet" href="pickup.css">
+  <script type="module" src="pickup.js"></script>
+ 
+</head>
+<body>
+  <h1 style="text-align: center; margin-bottom: 20px;">Schedule</h1>
+  <form  id="pickupForm">
 
-#pickup:hover {
-  background-color: #9cff99; /* lighter pink hover effect color */
-}
+    <div class="alert">Your pickup is scheduled</div>
 
-#pickup:active {
-  background-color: #69ff7b; /* pink active effect color */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* deeper shadow on click */
-}
-    </style>
-  </head>
-  <body>
-    <h1 style="text-align: center; margin-bottom: 20px;">Schedule</h1>
-    <form action="/submit" method="post" style="max-width: 500px; margin: 40px auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-      <h2>Personal Details</h2>
-      <label for="name">Name</label><br />
-      <input style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc;" type="text" name="cname" placeholder="Your Name" required="required" /><br />
-      <label for="email">Email</label><br />
-      <input style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc;" name="email" type="email" placeholder="Your Email" required="required" /><br />
-      <label for="phone">Phone Number</label><br />
-      <input style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc;" name="phone" type="text" placeholder="Your Phone number" required="required" /><br />
+    <h2>Personal Details</h2>
+    <label for="name">Name</label><br />
+    <input type="text" id="name" placeholder="Your Name" required="required" /><br />
+    <label for="email">Email</label><br />
+    <input id="email" type="email" placeholder="Your Email" required="required" /><br />
+    <label for="phone">Phone Number</label><br />
+    <input id="phone" type="text" placeholder="Your Phone number" required="required" /><br />
 
-      <h2>Pickup Details</h2>
-      <label for="date">Date for pickup</label><br />
-      <input class="date_pickup" style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc;" type="text" placeholder="dd-mm-yyyy" required="required" /><br />
-      <label for="">Estimated Time pickup</label><br />
-      <input style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc;" date="pickup" type="text" placeholder="hh:mm" required="required" /><br />
-      <label for="Address">Address for Pickup</label><br />
-      <textarea style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc;" name="Address" type="text" placeholder="Your Address" required="required"></textarea><br />
-      
+    <h2>Pickup Details</h2>
+    <label for="date">Date for pickup</label><br />
+    <input class="date_pickup" type="date" id="date" placeholder="dd-mm-yyyy" required="required" /><br />
+    <label for="">Estimated Time pickup</label><br />
+    <input date="pickup" id="time" type="time" placeholder="hh:mm" required="required" /><br />
+    <label for="Address">Address for Pickup</label><br />
+    <textarea id="Address" type="text" placeholder="Your Address" required="required"></textarea><br />
 
-      <h3>Recyclable Waste Details</h3>
-      <label for="waste_type">Type of waste: </label><br />
-      <select style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ccc;" name="waste_type" input="input" class="waste_type" required="required">
+    <h3>Recyclable Waste Details</h3>
+    <label for="waste_type">Type of waste: </label><br />
+    <select id="waste_type" input="input" class="waste_type" required="required">
+      <option value="" disabled="disabled" selected="selected">
+        Please select an estimate range
       </option>
       <option value="paper">
         Paper (old newspapers, magazines,etc)
@@ -116,24 +46,23 @@
       <option value="Metal">
         Metal (old utensils, cola cans, etc)
       </option>
-      </select>
-      <label for="quantity">Estimate Quantity of waste: </label><br />
-  <select
-    name="quantity"
-    input="input"
-    class="quantity"
-    required="required"
-  >
-    <option value="" disabled="disabled" selected="selected">
-      Please select an estimate range
-    </option>
-    <option value="1-5 kgs">1 - 5 kilograms</option>
-    <option value="5-10 kgs">5 - 10 kilograms</option>
-    <option value="above 10 kgs">Above 10 kilograms</option>
-  </select>
+    </select>
+    <label for="quantity">Estimate Quantity of waste: </label><br />
+    <select
+    id="quantity"
+      input="input"
+      class="quantity"
+      required="required"
+    >
+      <option value="" disabled="disabled" selected="selected">
+        Please select an estimate range
+      </option>
+      <option value="1-5 kgs">1 - 5 kilograms</option>
+      <option value="5-10 kgs">5 - 10 kilograms</option>
+      <option value="above 10 kgs">Above 10 kilograms</option>
+    </select>
 
-  <button type="submit" id="pickup" >Submit</button>
+    <button type="submit" id="pickup">Submit</button>
   </form>
-</script>
-  </body>
-  </html>
+</body>
+</html>
