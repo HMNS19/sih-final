@@ -1,6 +1,6 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.1/firebase-app.js";
-import {getAuth, onAuthStateChanged, signOut} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-auth.js";
-import{getFirestore, getDoc, doc} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js"
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+import {getAuth, onAuthStateChanged, signOut} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
+import{getFirestore, getDoc, doc} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js"
 
 
     const firebaseConfig = {
@@ -16,7 +16,7 @@ import{getFirestore, getDoc, doc} from "https://www.gstatic.com/firebasejs/10.11
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
 
-  const auth=getAuth();
+  const auth=getAuth(app);
   const db=getFirestore();
 
   onAuthStateChanged(auth, (user)=>{
