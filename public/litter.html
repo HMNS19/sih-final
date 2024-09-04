@@ -3,25 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="litter.css" />
+    <link rel="stylesheet" href="./css/litter.css" />
     <title>Blackspot Current Location</title>
   </head>
   <body>
     <h1>BlackSpot</h1>
-    <p>Latitude: <span id="latitude">...</span></p>
-    <p>Longitude: <span id="longitude">...</span></p>
-    <p>Accuracy: <span id="accuracy">...</span> meters</p>
+    <p id="detail">
+      Please enable location access to determine your current location
+    </p>
+    <form>
+      <h2>Current Location</h2>
+      <p>Latitude <span id="latitude">...</span></p>
+      <p>Longitude <span id="longitude">...</span></p>
+      <p>Accuracy <span id="accuracy">...</span> meters</p>
 
-    <section class="container">
-      <div class="dropzone">
-        <input type="file" id="fileInput" />
-        <p class="img_text">Click to take a picture...</p>
-      </div>
-      <aside>
-        <h4>Image</h4>
-        <ul id="fileList"></ul>
-      </aside>
-    </section>
+      <p>..</p>
+      <h2>Upload an Image</h2>
+      <section class="container">
+        <div class="dropzone">
+          <input type="file" id="fileInput" />
+          <p class="img_text">Click to take a picture...</p>
+        </div>
+        <aside>
+          <h4>Image</h4>
+          <ul id="fileList"></ul>
+        </aside>
+      </section>
+    </form>
 
     <script>
       // Get the current location
@@ -36,8 +44,6 @@
           console.error("Error getting location:", error);
         }
       );
-
-      // Functionality for handling files would need additional scripting (not included)
     </script>
   </body>
 </html>

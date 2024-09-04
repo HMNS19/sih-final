@@ -1,68 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Schedule A Pickup, NOW!</title>
-  <link rel="stylesheet" href="pickup.css">
-  <script type="module" src="pickup.js"></script>
- 
-</head>
-<body>
-  <h1 style="text-align: center; margin-bottom: 20px;">Schedule</h1>
-  <form  id="pickupForm">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Schedule A Pickup, NOW!</title>
+    <link rel="stylesheet" href="./css/pickup.css" />
+    <script type="module" src="pickup.js"></script>
+  </head>
+  <body>
+    <h1 style="text-align: center; margin-bottom: 20px">Schedule</h1>
+    <form id="pickupForm">
+      <div class="alert">Your pickup is scheduled</div>
 
-    <div class="alert">Your pickup is scheduled</div>
+      <h2>Personal Details</h2>
+      <label for="name">Name</label><br />
+      <input
+        type="text"
+        id="name"
+        placeholder="Your Name"
+        required="required"
+      /><br />
+      <label for="email">Email</label><br />
+      <input
+        id="email"
+        type="email"
+        placeholder="Your Email"
+        required="required"
+      /><br />
+      <label for="phone">Phone Number</label><br />
+      <input
+        id="phone"
+        type="text"
+        placeholder="Your Phone number"
+        required="required"
+      /><br />
 
-    <h2>Personal Details</h2>
-    <label for="name">Name</label><br />
-    <input type="text" id="name" placeholder="Your Name" required="required" /><br />
-    <label for="email">Email</label><br />
-    <input id="email" type="email" placeholder="Your Email" required="required" /><br />
-    <label for="phone">Phone Number</label><br />
-    <input id="phone" type="text" placeholder="Your Phone number" required="required" /><br />
+      <h2>Pickup Details</h2>
+      <label for="date">Date for pickup</label><br />
+      <input
+        class="date_pickup"
+        type="date"
+        id="date"
+        placeholder="dd-mm-yyyy"
+        required="required"
+      /><br />
+      <label for="">Estimated Time pickup</label><br />
+      <input
+        date="pickup"
+        id="time"
+        type="time"
+        placeholder="hh:mm"
+        required="required"
+      /><br />
+      <label for="Address">Address for Pickup</label><br />
+      <textarea
+        id="Address"
+        type="text"
+        placeholder="Your Address"
+        required="required"
+      ></textarea
+      ><br />
 
-    <h2>Pickup Details</h2>
-    <label for="date">Date for pickup</label><br />
-    <input class="date_pickup" type="date" id="date" placeholder="dd-mm-yyyy" required="required" /><br />
-    <label for="">Estimated Time pickup</label><br />
-    <input date="pickup" id="time" type="time" placeholder="hh:mm" required="required" /><br />
-    <label for="Address">Address for Pickup</label><br />
-    <textarea id="Address" type="text" placeholder="Your Address" required="required"></textarea><br />
+      <h3>Recyclable Waste Details</h3>
+      <label for="waste_type">Type of waste: </label><br />
+      <select
+        id="waste_type"
+        input="input"
+        class="waste_type"
+        required="required"
+      >
+        <option value="" disabled="disabled" selected="selected">
+          Please select an estimate range
+        </option>
+        <option value="paper">Paper (old newspapers, magazines,etc)</option>
+        <option value="Plastic">
+          Plastic (plastic bottles, styrofoam products etc)
+        </option>
+        <option value="Metal">Metal (old utensils, cola cans, etc)</option>
+      </select>
+      <label for="quantity">Estimate Quantity of waste: </label><br />
+      <select id="quantity" input="input" class="quantity" required="required">
+        <option value="" disabled="disabled" selected="selected">
+          Please select an estimate range
+        </option>
+        <option value="1-5 kgs">1 - 5 kilograms</option>
+        <option value="5-10 kgs">5 - 10 kilograms</option>
+        <option value="above 10 kgs">Above 10 kilograms</option>
+      </select>
 
-    <h3>Recyclable Waste Details</h3>
-    <label for="waste_type">Type of waste: </label><br />
-    <select id="waste_type" input="input" class="waste_type" required="required">
-      <option value="" disabled="disabled" selected="selected">
-        Please select an estimate range
-      </option>
-      <option value="paper">
-        Paper (old newspapers, magazines,etc)
-      </option>
-      <option value="Plastic">
-        Plastic (plastic bottles, styrofoam products
-        etc) 
-      </option>
-      <option value="Metal">
-        Metal (old utensils, cola cans, etc)
-      </option>
-    </select>
-    <label for="quantity">Estimate Quantity of waste: </label><br />
-    <select
-    id="quantity"
-      input="input"
-      class="quantity"
-      required="required"
-    >
-      <option value="" disabled="disabled" selected="selected">
-        Please select an estimate range
-      </option>
-      <option value="1-5 kgs">1 - 5 kilograms</option>
-      <option value="5-10 kgs">5 - 10 kilograms</option>
-      <option value="above 10 kgs">Above 10 kilograms</option>
-    </select>
-
-    <button type="submit" id="pickup">Submit</button>
-  </form>
-</body>
+      <button type="submit" id="pickup">Submit</button>
+    </form>
+  </body>
 </html>

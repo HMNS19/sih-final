@@ -17,13 +17,10 @@ nav {
 }
 
 nav a {
-  color: white;
   text-decoration: none;
-  margin: 0 15px;
-}
-
-nav a:hover {
-  text-decoration: underline;
+  color: white;
+  padding: 10px 15px;
+  transition: background-color 0.3s ease;
 }
 
 nav .download-btn {
@@ -41,7 +38,7 @@ header {
 }
 
 header h1 {
-  font-size: 2.5em;
+  font-size: 2.25em;
   margin-bottom: 10px;
 }
 
@@ -62,9 +59,13 @@ header .download-app-btn {
 .illustration {
   float: right;
   width: 50%;
-  margin-top: -100px;
+  margin-top: -125px;
 }
 
 .illustration img {
   width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
