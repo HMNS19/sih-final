@@ -6,6 +6,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
     <link rel="stylesheet" href="./css/contactus.css" />
+    <script type="module" src="contactus.js"></script>
   </head>
   <body>
     <div class="container">
@@ -29,13 +30,14 @@
         </div>
       </div>
       <div class="right">
-        <form>
-          <input type="text" placeholder="Your Name" />
-          <input type="email" placeholder="Your email" />
-          <input type="text" placeholder="Phone" />
-          <input type="text" placeholder="Subject" />
-          <textarea placeholder="message"></textarea>
-          <button type="submit">Send Message</button>
+        <form id="contactusForm">
+          <div class="alert">Thank you for the feedback!</div>
+          <input id="name" type="text" placeholder="Your Name" />
+          <input id="email" type="email" placeholder="Your email" />
+          <input id="phone" type="text" placeholder="Phone" />
+          <input id="subject" type="text" placeholder="Subject" />
+          <textarea id="msg" placeholder="message"></textarea>
+          <button id="contact" type="submit">Send Message</button>
         </form>
       </div>
     </div>
