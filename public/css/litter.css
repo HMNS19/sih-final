@@ -173,3 +173,44 @@ aside h4 {
 #fileList li:hover {
   background-color: #f0f0f0;
 }
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-size: large;
+}
+
+input[type="text"],
+textarea {
+  width: 90%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  align-items: center;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}
+
+.alert {
+  width: 90%;
+  background-color: #28a745;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 900;
+  display: none;
+}

@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/litter.css" />
-    <title>Blackspot Current Location</title>
+    <script type="module" src="litter.js"></script>
+    <title>BlackSpot</title>
   </head>
   <body>
     <nav>
@@ -30,7 +31,8 @@
     <p id="detail">
       Please enable location access to determine your current location
     </p>
-    <form>
+    <form id="litterform">
+      <div class="alert">Your complaint is registered</div>
       <h2>Current Location</h2>
       <p>Latitude <span id="latitude">...</span></p>
       <p>Longitude <span id="longitude">...</span></p>
@@ -48,21 +50,27 @@
           <ul id="fileList"></ul>
         </aside>
       </section>
-    </form>
+      <div class="form-container">
+        <form>
+          <label for="landmark">Landmark</label>
+          <input
+            type="text"
+            id="landmark"
+            name="landmark"
+            oninput="handleLandmarkChange(event)"
+          />
 
-    <script>
-      // Get the current location
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude, accuracy } = position.coords;
-          document.getElementById("latitude").textContent = latitude;
-          document.getElementById("longitude").textContent = longitude;
-          document.getElementById("accuracy").textContent = accuracy;
-        },
-        (error) => {
-          console.error("Error getting location:", error);
-        }
-      );
-    </script>
+          <label for="description">Description</label>
+          <textarea
+            id="description"
+            name="description"
+            rows="4"
+            oninput="handleDescriptionChange(event)"
+          ></textarea>
+
+          <button type="submit" id="BlackSpot">Submit</button>
+        </form>
+      </div>
+    </form>
   </body>
 </html>

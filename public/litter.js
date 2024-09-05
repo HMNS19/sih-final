@@ -1,23 +1,26 @@
-// Get the elements
-const latitudeElement = document.getElementById("latitude");
-const longitudeElement = document.getElementById("longitude");
-const accuracyElement = document.getElementById("accuracy");
-const fileInput = document.getElementById("fileInput");
-const fileList = document.getElementById("fileList");
-
+// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 import {
   getDatabase,
   set,
   ref,
 } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
-import {
-  getStorage,
-  ref as storageRef,
-  uploadTask,
-} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-storage.js";
 
-// Initialize Firebase
+// Get the current location
+navigator.geolocation.getCurrentPosition(
+  (position) => {
+    const { latitude, longitude, accuracy } = position.coords;
+    document.getElementById("latitude").textContent = latitude;
+    document.getElementById("longitude").textContent = longitude;
+    document.getElementById("accuracy").textContent = accuracy;
+  },
+  (error) => {
+    console.error("Error getting location:", error);
+  }
+);
+
 const firebaseConfig = {
   apiKey: "AIzaSyCui4rUSBEeRa0pYFzPBkvFd4amdfCAlM4",
   authDomain: "reactdemo-84e45.firebaseapp.com",
@@ -30,73 +33,41 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-// Get a reference to the Realtime Database
-const db = getDatabase(app);
-
-// Get a reference to Firebase Storage
-const storage = getStorage(app);
-
 // Function to get the current location
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        const { latitude, longitude, accuracy } = position.coords;
-        latitudeElement.textContent = latitude;
-        longitudeElement.textContent = longitude;
-        accuracyElement.textContent = accuracy;
+document.getElementById("Blackspot").addEventListener("click", submitForm);
 
-        // Store location data in Firebase Realtime Database
-        db.ref("location").set({
-          latitude,
-          longitude,
-          accuracy,
-        });
-      },
-      (error) => {
-        console.error("Error getting location:", error);
-      }
-    );
-  } else {
-    console.error("Geolocation is not supported by this browser.");
-  }
+function submitForm(e) {
+  e.preventDefault();
+
+  var latitude = getElementVal("latitude");
+  var longitude = getElementVal("longitude");
+  var accuracy = getElementVal("accuracy");
+  var landmark = getElementVal("landmark");
+  var description = getElementVal("description");
+
+  saveMessages(latitude, longitude, accuracy, landmark, description);
+
+  //   enable alert
+  document.querySelector(".alert").style.display = "block";
+
+  //   remove the alert and rest the form
+  setTimeout(() => {
+    document.querySelector(".alert").style.display = "none";
+    document.getElementById("litterform").reset();
+  }, 3000);
 }
 
-// Function to handle file input
-function handleFileInput() {
-  const files = fileInput.files;
-  const fileListHTML = [];
+const getElementVal = (id) => {
+  return document.getElementById(id).value;
+};
 
-  for (let i = 0; i < files.length; i++) {
-    const file = files[i];
-    fileListHTML.push(`<li>${file.name} - ${file.size} bytes</li>`);
-
-    // Upload file to Firebase Storage
-    const uploadTask = storage.ref(`files/${file.name}`).put(file);
-
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        // Handle upload progress
-        const progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log(`Upload is ${progress}% done`);
-      },
-      (error) => {
-        console.error("Error uploading file:", error);
-      },
-      () => {
-        // Handle successful upload
-        console.log("File uploaded successfully!");
-      }
-    );
-  }
-
-  fileList.innerHTML = fileListHTML.join("");
-}
-
-// Add event listener to file input
-fileInput.addEventListener("change", handleFileInput);
-
-// Get the current location on page load
-getLocation();
+const saveMessages = (latitude, longitude, accuracy, landmark, description) => {
+  const blackspotDB = getDatabase(app);
+  set(ref(blackspotDB, "Blackspot/"), {
+    latitude: latitude,
+    longitude: longitude,
+    accuracy: accuracy,
+    landmark: landmark,
+    description: description,
+  });
+};
