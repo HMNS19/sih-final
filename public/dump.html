@@ -1,22 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dumpsites</title>
+    <link rel="stylesheet" href="./css/dump.css" />
+  </head>
+  <body>
     <nav>
-        <div class="nav-links">
-          <a href="./home.html">Home</a>
-          <a href="#">About</a>
-          <a href="./dump.html">Dumpsites</a>
-          <a href="./pickup.html">Pickup</a>
-          <a href="./litter.html">BlackSpot</a>
-          <a href="">Bins</a>
-          <a href="./contactus.html">Contact</a>
+      <div class="nav-links">
+        <a href="./home.html">Home</a>
+        <a href="#">About</a>
+        <a href="./dump.html">Dumpsites</a>
+        <a href="./pickup.html">Pickup</a>
+        <a href="./litter.html">BlackSpot</a>
+        <div class="dropdown">
+          <a href="./home.html">Bins</a>
+          <div class="dropdown-content">
+            <a href="./add_Bin.html">Add a Bin</a>
+            <a href="#">View Bins</a>
+          </div>
         </div>
-        <a href="./login.html" class="download-btn">Login/Register</a>
-      </nav>
-</body>
+        <a href="./contactus.html">Contact</a>
+      </div>
+      <a href="./login.html" class="download-btn">Login/Register</a>
+    </nav>
+  </body>
+  <div class="map-container">
+    <iframe
+      src="https://www.google.com/maps/d/embed?mid=1ANTIXYWjPK8bqLlB7hGopl8Q2f94pCY&ehbc=2E312F"
+      width="640"
+      height="480"
+    ></iframe>
+  </div>
 </html>

@@ -1,35 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register</title>
-</head>
-<body>
-  <nav>
-    <div class="nav-links">
-      <a href="./home.html">Home</a>
-      <a href="#">About</a>
-      <a href="./dump.html">Dumpsites</a>
-      <a href="./pickup.html">Pickup</a>
-      <a href="./litter.html">BlackSpot</a>
-      <a href="">Bins</a>
-      <a href="./contactus.html">Contact</a>
-    </div>
-    <a href="./login.html" class="download-btn">Login/Register</a>
-  </nav>
-
-    <div id="register-form" style="display: none;">
-        <h2>Register</h2>
-        <form action="/home" method="get">
-          <label for="new-username">Username:</label>
-          <input type="text" id="new-username" name="new-username"><br><br>
-          <label for="new-password">Password:</label>
-          <input type="password" id="new-password" name="new-password"><br><br>
-          <label for="confirm-password">Confirm Password:</label>
-          <input type="password" id="confirm-password" name="confirm-password"><br><br>
-          <input type="submit" value="Register">
-        </form>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-links">
+        <a href="./home.html">Home</a>
+        <a href="#">About</a>
+        <a href="./dump.html">Dumpsites</a>
+        <a href="./pickup.html">Pickup</a>
+        <a href="./litter.html">BlackSpot</a>
+        <div class="dropdown">
+          <a href="./home.html">Bins</a>
+          <div class="dropdown-content">
+            <a href="./add_Bin.html">Add a Bin</a>
+            <a href="#">View Bins</a>
+          </div>
+        </div>
+        <a href="./contactus.html">Contact</a>
       </div>
-</body>
+      <a href="./login.html" class="download-btn">Login/Register</a>
+    </nav>
+
+    <div id="register-form" style="display: none">
+      <h2>Register</h2>
+      <form action="/home" method="get">
+        <label for="new-username">Username:</label>
+        <input type="text" id="new-username" name="new-username" /><br /><br />
+        <label for="new-password">Password:</label>
+        <input
+          type="password"
+          id="new-password"
+          name="new-password"
+        /><br /><br />
+        <label for="confirm-password">Confirm Password:</label>
+        <input
+          type="password"
+          id="confirm-password"
+          name="confirm-password"
+        /><br /><br />
+        <input type="submit" value="Register" />
+      </form>
+    </div>
+  </body>
 </html>

@@ -1,15 +1,33 @@
-<html>
+<!-- <html>
   <head>
     <title>Contact Us</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
     />
-    <link rel="stylesheet" href="./css/contactus.css" />
-    <script type="module" src="contactus.js"></script>
+    
   </head>
   <body>
-
+    <div class="container">
+      <nav>
+        <div class="nav-links">
+          <a href="./home.html">Home</a>
+          <a href="#">About</a>
+          <a href="./dump.html">Dumpsites</a>
+          <a href="./pickup.html">Pickup</a>
+          <a href="./litter.html">BlackSpot</a>
+          <div class="dropdown">
+            <a href="./home.html">Bins</a>
+            <div class="dropdown-content">
+              <a href="./add_Bin.html">Add a Bin</a>
+              <a href="#">View Bins</a>
+            </div>
+          </div>
+          <a href="./contactus.html">Contact</a>
+        </div>
+        <a href="./login.html" class="download-btn">Login/Register</a>
+      </nav>
+    </div>
 
     <div class="container">
       <div class="left">
@@ -41,6 +59,68 @@
           <textarea id="msg" placeholder="message"></textarea>
           <button id="contact" type="submit">Send Message</button>
         </form>
+      </div>
+    </div>
+  </body>
+</html> -->
+
+<html>
+  <head>
+    <title>Contact Page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./css/contactus.css" />
+    <script type="module" src="contactus.js"></script>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-links">
+        <a href="./home.html">Home</a>
+        <a href="#">About</a>
+        <a href="./dump.html">Dumpsites</a>
+        <a href="./pickup.html">Pickup</a>
+        <a href="./litter.html">BlackSpot</a>
+        <div class="dropdown">
+          <a href="./home.html">Bins</a>
+          <div class="dropdown-content">
+            <a href="./add_Bin.html">Add a Bin</a>
+            <a href="#">View Bins</a>
+          </div>
+        </div>
+        <a href="./contactus.html">Contact</a>
+      </div>
+      <a href="./login.html" class="login">Login/Register</a>
+    </nav>
+    <div class="container">
+      <div class="contact-box">
+        <div class="contact-info">
+          <h2>Contact with the team</h2>
+          <p>Feel free to contact us for any queries.</p>
+          <p>
+            <i class="fas fa-map-marker-alt"></i>
+            <strong>Location :</strong> Bangalore, Karnataka
+          </p>
+          <p>
+            <i class="fas fa-phone"></i> <strong>Phone no :</strong> (+91)
+            9999999999
+          </p>
+          <p>
+            <i class="fas fa-envelope"></i>
+            <strong>Email :</strong> vineethnakka@gmail.com
+          </p>
+        </div>
+        <div id="contactusForm" class="contact-form">
+            <div class="alert">Thank you for the feedback!</div>
+            <input id="name" type="text" placeholder="Your Name" />
+            <input id="email" type="email" placeholder="Your email" />
+            <input id="phone" type="text" placeholder="Phone" />
+            <input id="subject" type="text" placeholder="Subject" />
+            <textarea id="msg" placeholder="message"></textarea>
+            <button id="contact" type="submit">Send Message</button>
+          </form>
+        </div>
       </div>
     </div>
   </body>

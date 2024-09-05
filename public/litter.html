@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/litter.css" />
-    <title>Blackspot Current Location</title>
+    <script type="module" src="litter.js"></script>
+    <title>BlackSpot</title>
   </head>
   <body>
     <nav>
@@ -14,7 +15,13 @@
         <a href="./dump.html">Dumpsites</a>
         <a href="./pickup.html">Pickup</a>
         <a href="./litter.html">BlackSpot</a>
-        <a href="">Bins</a>
+        <div class="dropdown">
+          <a href="./home.html">Bins</a>
+          <div class="dropdown-content">
+            <a href="./add_Bin.html">Add a Bin</a>
+            <a href="#">View Bins</a>
+          </div>
+        </div>
         <a href="./contactus.html">Contact</a>
       </div>
       <a href="./login.html" class="download-btn">Login/Register</a>
@@ -24,7 +31,8 @@
     <p id="detail">
       Please enable location access to determine your current location
     </p>
-    <form>
+    <form id="litterform">
+      <div class="alert">Your complaint is registered</div>
       <h2>Current Location</h2>
       <p>Latitude <span id="latitude">...</span></p>
       <p>Longitude <span id="longitude">...</span></p>
@@ -42,21 +50,24 @@
           <ul id="fileList"></ul>
         </aside>
       </section>
-    </form>
+      <div class="form-container">
+        <label for="landmark">Landmark</label>
+        <input
+          type="text"
+          id="landmark"
+          name="landmark"
+          oninput="handleLandmarkChange(event)"
+        />
 
-    <script>
-      // Get the current location
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude, accuracy } = position.coords;
-          document.getElementById("latitude").textContent = latitude;
-          document.getElementById("longitude").textContent = longitude;
-          document.getElementById("accuracy").textContent = accuracy;
-        },
-        (error) => {
-          console.error("Error getting location:", error);
-        }
-      );
-    </script>
+        <label for="description">Description</label>
+        <textarea
+          id="description"
+          name="description"
+          rows="4"
+          oninput="handleDescriptionChange(event)"
+        ></textarea>
+        <button type="submit" id="BlackSpot">Submit</button>
+      </div>
+    </form>
   </body>
 </html>
