@@ -7,6 +7,25 @@
     <title>Add a Bin</title>
   </head>
   <body>
+    <nav>
+      <div class="nav-links">
+        <a href="./home.html">Home</a>
+        <a href="#">About</a>
+        <a href="./dump.html">Dumpsites</a>
+        <a href="./pickup.html">Pickup</a>
+        <a href="./litter.html">BlackSpot</a>
+        <div class="dropdown">
+          <a href="./home.html">Bins</a>
+          <div class="dropdown-content">
+            <a href="./add_Bin.html">Add a Bin</a>
+            <a href="#">View Bins</a>
+          </div>
+        </div>
+        <a href="./contactus.html">Contact</a>
+      </div>
+      <a href="./login.html" class="download-btn">Login/Register</a>
+    </nav>
+
     <h1>Add a Bin</h1>
     <p id="detail">
       Please enable location access to determine your current location
@@ -29,6 +48,27 @@
           <ul id="fileList"></ul>
         </aside>
       </section>
+      <div class="form-container">
+        <form>
+          <label for="landmark">Landmark</label>
+          <input
+            type="text"
+            id="landmark"
+            name="landmark"
+            oninput="handleLandmarkChange(event)"
+          />
+
+          <label for="description">Description</label>
+          <textarea
+            id="description"
+            name="description"
+            rows="4"
+            oninput="handleDescriptionChange(event)"
+          ></textarea>
+
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     </form>
 
     <script>
