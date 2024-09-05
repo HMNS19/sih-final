@@ -1,0 +1,116 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 20;
+  padding: 0;
+  background-color: #c9d6ff;
+  background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+}
+
+form {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #f5f5f5; /* Light gray background color */
+}
+
+#detail {
+  text-align: center;
+  font-size: 18px;
+}
+
+/* Header */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+p span::before {
+  content: ": ";
+}
+
+/* Container */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  /* padding: 20px; */
+  /* border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff; */
+  transition: transform 0.3s ease;
+}
+
+/* .container:hover {
+    transform: scale(1.02);
+  } */
+
+/* Dropzone */
+.dropzone {
+  border: 2px dashed #3498db;
+  padding: 20px;
+  width: fit-content;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: #ecf0f1;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.dropzone:hover {
+  border-color: #2980b9;
+  background-color: #d0e6f7;
+}
+
+.img_text {
+  text-align: center;
+  font-size: 18px;
+  color: #2980b9;
+}
+
+/* Aside */
+aside {
+  /* margin-top: 20px; */
+  padding: 20px;
+  /* border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff; */
+}
+
+aside h4 {
+  margin-top: 0;
+  color: #2c3e50;
+}
+
+#fileList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#fileList li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  transition: background-color 0.3s ease;
+}
+
+#fileList li:last-child {
+  border-bottom: none;
+}
+
+#fileList li:hover {
+  background-color: #f0f0f0;
+}
