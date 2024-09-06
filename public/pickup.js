@@ -55,7 +55,7 @@ const getElementVal = (id) => {
 const saveMessages=(name, email,phone,time,quantity,Address,waste_type,date) => {
     
     const pickupDB = getDatabase(app);
-    set(ref(pickupDB, 'pickups/'), {
+    set(ref(pickupDB, 'pickups/'+name), {
     name: name,
     email: email,
     phone:phone,
