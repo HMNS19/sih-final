@@ -1,215 +1,226 @@
 .navbar {
-    background-color: #333; /* dark gray background */
-    padding: 10px; /* padding for a nice size */
-    display: flex; /* flexbox for layout */
-    justify-content: space-between; /* space between left and right sides */
-    align-items: center; /* center vertically */
-  }
-  
-  .left-side ul {
-    list-style: none; /* no bullet points */
-    margin: 0; /* no margin */
-    padding: 0; /* no padding */
-    display: flex; /* flexbox for layout */
-  }
-  
-  .left-side li {
-    margin-right: 20px; /* space between items */
-  }
-  
-  .left-side a {
-    color: #fff; /* white text color */
-    text-decoration: none; /* no underline */
-  }
-  
-  .left-side a:hover {
-    color: #ccc; /* light gray hover effect color */
-  }
-  
-  .right-side ul {
-    list-style: none; /* no bullet points */
-    margin: 0; /* no margin */
-    padding: 0; /* no padding */
-    display: flex; /* flexbox for layout */
-  }
-  
-  .right-side li {
-    margin-left: 20px; /* space between items */
-  }
-  
-  .right-side a {
-    color: #fff; /* white text color */
-    text-decoration: none; /* no underline */
-  }
-  
-  .right-side a:hover {
-    color: #ccc; /* light gray hover effect color */
-  }
+  background-color: #333; /* dark gray background */
+  padding: 10px; /* padding for a nice size */
+  display: flex; /* flexbox for layout */
+  justify-content: space-between; /* space between left and right sides */
+  align-items: center; /* center vertically */
+}
 
-  .login-portal {
-    background-color: #f0f0f0; /* light gray background */
-    padding: 20px; /* padding for a nice size */
-    border: 1px solid #ccc; /* light gray border */
-    border-radius: 10px; /* rounded corners */
-    width: 300px; /* fixed width */
-    margin: 40px auto; /* center horizontally */
-  }
-  
-  .login-portal h2 {
-    margin-top: 0; /* no margin top */
-  }
-  
-  #login-form {
-    margin-bottom: 20px; /* space between forms */
-  }
-  
-  #register-form {
-    display: none; /* hide register form by default */
-  }
-  
-  #register-link {
-    text-decoration: none; /* no underline */
-    color: #337ab7; /* blue link color */
-  }
-  
-  #register-link:hover {
-    color: #23527c; /* darker blue hover effect color */
-  }
-  /* ---------------------------------------- */
-  *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:"poppins",sans-serif;
+.left-side ul {
+  list-style: none; /* no bullet points */
+  margin: 0; /* no margin */
+  padding: 0; /* no padding */
+  display: flex; /* flexbox for layout */
 }
-body{
-    background-color: #c9d6ff;
-    background:linear-gradient(to right,#e2e2e2,#c9d6ff);
-}
-.container{
-    background:#fff;
-    width:450px;
-    padding:1.5rem;
-    margin:50px auto;
-    border-radius:10px;
-    box-shadow:0 20px 35px rgba(0,0,1,0.9);
-}
-form{
-    margin:0 2rem;
-}
-.form-title{
-    font-size:1.5rem;
-    font-weight:bold;
-    text-align:center;
-    padding:1.3rem;
-    margin-bottom:0.4rem;
-}
-input{
-    color:inherit;
-    width:100%;
-    background-color:transparent;
-    border:none;
-    border-bottom:1px solid #757575;
-    padding-left:1.5rem;
-    font-size:15px;
-}
-.input-group{
-    padding:1% 0;
-    position:relative;
 
+.left-side li {
+  margin-right: 20px; /* space between items */
 }
-.input-group i{
-    position:absolute;
-    color:black;
-}
-input:focus{
-    background-color: transparent;
-    outline:transparent;
-    border-bottom:2px solid #166412;
-}
-input::placeholder{
-    color:transparent;
-}
-label{
-    color:#757575;
-    position:relative;
-    left:1.2em;
-    top:-1.3em;
-    cursor:auto;
-    transition:0.3s ease all;
-}
-input:focus~label,input:not(:placeholder-shown)~label{
-    top:-3em;
-    color:#166412;
-    font-size:15px;
-}
-.recover{
-    text-align:right;
-    font-size:1rem;
-    margin-bottom:1rem;
 
+.left-side a {
+  color: #fff; /* white text color */
+  text-decoration: none; /* no underline */
 }
-.recover a{
-    text-decoration:none;
-    color:rgb(125,125,235);
+
+.left-side a:hover {
+  color: #ccc; /* light gray hover effect color */
 }
-.recover a:hover{
-    color:#166412;
-    text-decoration:underline;
+
+.right-side ul {
+  list-style: none; /* no bullet points */
+  margin: 0; /* no margin */
+  padding: 0; /* no padding */
+  display: flex; /* flexbox for layout */
 }
-button{
-    font-size:1.1rem;
-    padding:8px 0;
-    border-radius:5px;
-    outline:none;
-    border:none;
-    width:100%;
-    background:#166412;
-    color:white;
-    cursor:pointer;
-    transition:0.9s;
+
+.right-side li {
+  margin-left: 20px; /* space between items */
 }
-button:hover{
-    background:#07001f;
+
+.right-side a {
+  color: #fff; /* white text color */
+  text-decoration: none; /* no underline */
 }
-.or{
-    font-size:1.1rem;
-    margin-top:0.5rem;
-    text-align:center;
+
+.right-side a:hover {
+  color: #ccc; /* light gray hover effect color */
 }
-.icons{
-    text-align:center;
+
+.login-portal {
+  background-color: #f0f0f0; /* light gray background */
+  padding: 20px; /* padding for a nice size */
+  border: 1px solid #ccc; /* light gray border */
+  border-radius: 10px; /* rounded corners */
+  width: 300px; /* fixed width */
+  margin: 40px auto; /* center horizontally */
 }
-.icons i{
-    color:rgb(8, 8, 255);
-    padding:0.8rem 1.5rem;
-    border-radius:10px;
-    font-size:1.5rem;
-    cursor:pointer;
-    border:2px solid #dfe9f5;
-    margin:0 15px;
-    transition:1s;
+
+.login-portal h2 {
+  margin-top: 0; /* no margin top */
 }
-.icons i:hover{
-    background:#07001f;
-    font-size:1.6rem;
-    border:2px solid rgb(125,125,235);
+
+#login-form {
+  margin-bottom: 20px; /* space between forms */
 }
-.links{
-    display:flex;
-    justify-content:space-around;
-    padding:0 4rem;
-    margin-top:0.9rem;
-    font-weight:bold;
+
+#register-form {
+  display: none; /* hide register form by default */
 }
- #signUpButton, #signInButton{
-    color:rgb(0, 0, 255);
-    border:none;
-    background-color:transparent;
-    font-size:1rem;
-    font-weight:bold;
+
+#register-link {
+  text-decoration: none; /* no underline */
+  color: #337ab7; /* blue link color */
 }
-#signUpButton:hover, #signInButton:hover {
-    text-decoration:underline;
-    color:blue;
-} 
+
+#register-link:hover {
+  color: #23527c; /* darker blue hover effect color */
+}
+/* ---------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "poppins", sans-serif;
+}
+body {
+  background-color: #c9d6ff;
+  background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+}
+.container {
+  background: #fff;
+  width: 450px;
+  padding: 1.5rem;
+  margin: 50px auto;
+  border-radius: 10px;
+  box-shadow: 0 20px 35px rgba(0, 0, 1, 0.9);
+}
+form {
+  margin: 0 2rem;
+}
+.form-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 1.3rem;
+  margin-bottom: 0.4rem;
+}
+input {
+  color: inherit;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #757575;
+  padding-left: 1.5rem;
+  font-size: 15px;
+}
+.input-group {
+  padding: 1% 0;
+  position: relative;
+}
+.input-group i {
+  position: absolute;
+  color: black;
+}
+input:focus {
+  background-color: transparent;
+  outline: transparent;
+  border-bottom: 2px solid #166412;
+}
+input::placeholder {
+  color: transparent;
+}
+label {
+  color: #757575;
+  position: relative;
+  left: 1.2em;
+  top: -1.3em;
+  cursor: auto;
+  transition: 0.3s ease all;
+}
+input:focus ~ label,
+input:not(:placeholder-shown) ~ label {
+  top: -3em;
+  color: #166412;
+  font-size: 15px;
+}
+.recover {
+  text-align: right;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+.recover a {
+  text-decoration: none;
+  color: rgb(125, 125, 235);
+}
+.recover a:hover {
+  color: #166412;
+  text-decoration: underline;
+}
+button {
+  font-size: 1.1rem;
+  padding: 8px 0;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+  width: 100%;
+  background: #166412;
+  color: white;
+  cursor: pointer;
+  transition: 0.9s;
+}
+button:hover {
+  background: #07001f;
+}
+.or {
+  font-size: 1.1rem;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+.icons {
+  text-align: center;
+}
+.icons i {
+  color: rgb(8, 8, 255);
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border: 2px solid #dfe9f5;
+  margin: 0 15px;
+  transition: 1s;
+}
+.icons i:hover {
+  background: #07001f;
+  font-size: 1.6rem;
+  border: 2px solid rgb(125, 125, 235);
+}
+.links {
+  display: flex;
+  justify-content: space-around;
+  padding: 0 4rem;
+  margin-top: 0.9rem;
+  font-weight: bold;
+}
+#signUpButton,
+#signInButton {
+  color: rgb(0, 0, 255);
+  border: none;
+  background-color: transparent;
+  font-size: 1rem;
+  font-weight: bold;
+}
+#signUpButton:hover,
+#signInButton:hover {
+  text-decoration: underline;
+  color: blue;
+}
+
+.radio-group {
+  display: inline-table;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.stud {
+  position: static;
+}
