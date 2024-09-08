@@ -1,18 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  getAuth,
-  signInWithPopup,
-  GoogleAuthProvider,
-} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
-import {
-  getFirestore,
-  setDoc,
-  doc,
-} from "https://www.gstatic.com/firebasejs/10.11.1/firebase-firestore.js";
+import {createUserWithEmailAndPassword,signInWithEmailAndPassword,getAuth,signInWithPopup,GoogleAuthProvider,} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
 
+import { getFirestore,collection, addDoc ,getDocs} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
 const firebaseConfig = {
   apiKey: "AIzaSyCui4rUSBEeRa0pYFzPBkvFd4amdfCAlM4",
   authDomain: "reactdemo-84e45.firebaseapp.com",
@@ -27,7 +17,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
 
-//const db=getFirestore(app);
+
 
 function showMessage(message, divId) {
   var messageDiv = document.getElementById(divId);
@@ -56,7 +46,7 @@ signUp.addEventListener("click", (event) => {
   const lastName = document.getElementById("lName").value;
   const clgname = document.getElementById("collegeName").value;
 
-  createUserWithEmailAndPassword(auth, email, password)
+  createUserWithEmailAndPassword(auth, email, password,firstName,lastName,clgname)
     .then((userCredential) => {
       const user = userCredential.user;
       const userData = {
@@ -65,16 +55,8 @@ signUp.addEventListener("click", (event) => {
         lastName: lastName,
         clgname: clgname,
       };
+      saveInfo(email,firstName,lastName,clgname)
       showMessage("Account Created Successfully", "signUpMessage");
-      // const docRef=doc(db, "users", user.uid);
-      // setDoc(docRef,userData)
-      // .then(()=>{
-      //     window.location.href='index.html';
-      // })
-      // .catch((error)=>{
-      //     console.error("error writing document", error);
-
-      // });
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -85,6 +67,29 @@ signUp.addEventListener("click", (event) => {
       }
     });
 });
+
+async function saveInfo(email,firstName,lastName,clgname){
+  try {
+      const db = getFirestore(app);
+    const docRef = await addDoc(collection(db, "users"), {
+      email:email,
+      firstName:firstName,
+      lastName:lastName,
+      clgname:clgname,
+    });
+    console.log("Document written with ID: ", docRef.id);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+  // const querySnapshot = await getDocs(collection(db, "users"));
+  // querySnapshot.forEach((doc) => {
+  //   console.log(`${doc.id} => ${doc.data()}`);
+  // });
+  
+  }
+   
+
+
 
 document.getElementById("googleSignInButton").addEventListener("click", () => {
   signInWithPopup(auth, provider)
