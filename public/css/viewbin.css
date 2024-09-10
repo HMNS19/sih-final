@@ -1,12 +1,21 @@
- 
+/* Style the map container */
+#map {
+  width: 50vw;
+  height: 30vh;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
 
-  #map {
-    height: 100%;
-  }
+/* Style the markers */
+.gm-marker {
+  cursor: pointer;
+}
 
-  html,
-  body{
-    height:100%;
-    margin:0;
-    padding:0;
-  }
+.gm-marker:hover {
+  transform: scale(1.2);
+}
+
+.gm-marker:active {
+  transform: scale(0.8);
+}
