@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
 import {createUserWithEmailAndPassword,signInWithEmailAndPassword,getAuth,signInWithPopup,GoogleAuthProvider,} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
 
-import { getFirestore,collection, addDoc ,getDocs} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
+import { getFirestore,collection, addDoc ,getDocs,doc,setDoc} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
 const firebaseConfig = {
   apiKey: "AIzaSyCui4rUSBEeRa0pYFzPBkvFd4amdfCAlM4",
   authDomain: "reactdemo-84e45.firebaseapp.com",
@@ -57,6 +57,9 @@ signUp.addEventListener("click", (event) => {
       };
       saveInfo(email,firstName,lastName,clgname)
       showMessage("Account Created Successfully", "signUpMessage");
+      setTimeout(() => {
+        window.location.href = "home.html";
+      }, 2000); // 2000 milliseconds = 2 seconds
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -70,13 +73,15 @@ signUp.addEventListener("click", (event) => {
 
 async function saveInfo(email,firstName,lastName,clgname){
   try {
-      const db = getFirestore(app);
-    const docRef = await addDoc(collection(db, "users"), {
-      email:email,
-      firstName:firstName,
-      lastName:lastName,
-      clgname:clgname,
-    });
+    const db = getFirestore(app);
+    const docRef = doc(db, "users", email);
+await setDoc(docRef, {
+  email: email,
+  firstName: firstName,
+  lastName: lastName,
+  clgname: clgname,
+  points:100
+}), 
     console.log("Document written with ID: ", docRef.id);
   } catch (e) {
     console.error("Error adding document: ", e);
