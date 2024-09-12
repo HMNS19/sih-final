@@ -14,11 +14,16 @@ function initMap(mapInstance) {
     marker = new google.maps.Marker({
       position: { lat, lng },
       map: map,
+      title: "Bangalore",
+      icon: image,
+      animation: google.maps.Animation.DROP,
     });
     marker.addListener("click", () => {
       removeLocation(lat, lng);
     });
   });
+
+  const image = "images/dustbin1.png";
 
   // Retrieve locations from local storage
   const storedLocations = localStorage.getItem("locations");
@@ -28,6 +33,8 @@ function initMap(mapInstance) {
       marker = new google.maps.Marker({
         position: { lat: location.lat, lng: location.lng },
         map: map,
+        title: "Bangalore",
+        icon: image,
       });
       marker.addListener("click", () => {
         removeLocation(location.lat, location.lng);

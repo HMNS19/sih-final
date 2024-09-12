@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/litter.css" />
     <script type="module" src="litter.js"></script>
+    <script type="module" src="litter2.js"></script>
     <title>BlackSpot</title>
   </head>
   <body>
@@ -25,7 +26,7 @@
         </div>
         <a href="./contactus.html">Contact</a>
       </div>
-      <a href="./login.html" class="download-btn">Login/Register</a>
+      <a href="./login.html" class="download-btn">Logout</a>
     </nav>
 
     <h1>BlackSpot</h1>
@@ -37,14 +38,15 @@
 
       <h2>Upload an Image</h2>
       <section class="container">
-        <div class="dropzone">
-          <input type="file" id="fileInput" />
-          <p class="img_text">Click to take a picture...</p>
+        <div class="dropzone" id="imageUploader">
+          <input type="file" id="fileInput" accept="image/*" />
+          <button id="uploadImage">Upload Image</button>
         </div>
         <aside>
           <h4>Image</h4>
           <ul id="fileList"></ul>
         </aside>
+        <img id="imagePreview" src="" alt="Image Preview" />
       </section>
       <div class="form-container">
         <label for="landmark">Landmark</label>
