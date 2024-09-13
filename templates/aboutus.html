@@ -5,34 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Us</title>
-    <link rel="stylesheet" href="./css/aboutus.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/aboutus.css') }}" />
   </head>
   <body>
     <nav>
       <div class="nav-links">
-        <a href="./home.html">Home</a>
-        <a href="./aboutus.html">About</a>
-        <a href="./dump.html">Dumpsites</a>
-        <a href="./pickup.html">Pickup</a>
-        <a href="./litter.html">BlackSpot</a>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('aboutus') }}">About</a>
+        <a href="{{ url_for('dump') }}">Dumpsites</a>
+        <a href="{{ url_for('pickup') }}">Pickup</a>
+        <a href="{{ url_for('litter') }}">BlackSpot</a>
         <div class="dropdown">
           <a>Bins</a>
           <div class="dropdown-content">
-            <a href="./add_Bin.html">Add a Bin</a>
-            <a href="./viewbin.html">View Bins</a>
+            <a href="{{ url_for('add_bin') }}">Add a Bin</a>
+            <a href="{{ url_for('viewbin') }}">View Bins</a>
           </div>
         </div>
-        <a href="./contactus.html">Contact</a>
+        <a href="{{ url_for('contactus') }}">Contact</a>
       </div>
-      <a href="./login.html" class="download-btn">Logout</a>
+      <a href="{{ url_for('login') }}" class="download-btn">Logout</a>
     </nav>
     <section class="about-us">
       <div class="main-img">
-        <image src="./images/image.jpeg" alt=""></image>
+        <image src="{{ url_for('static', filename='images/image.jpeg') }}" alt=""></image>
       </div>
       <div class="text">
         <h4>About Us</h4>
-
         <p>
           At [Website Name], we are dedicated to transforming the way
           communities handle waste and sanitation. Our mission is to create a

@@ -8,15 +8,13 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
-    <link rel="stylesheet" href="./css/login.css" />
-
-    <script type="module" defer src="firebaseauth.js"></script>
-    <!-- <script  type="module" defer src="script.js"></script> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}" />
+    <script type="module" defer src="{{ url_for('static', filename='js/firebaseauth.js') }}"></script>
   </head>
   <body>
     <div class="container" id="signup" style="display: none">
       <h1 class="form-title">Register</h1>
-      <form method="post" action="">
+      <form method="post" action="{{ url_for('register') }}">
         <div id="signUpMessage" class="messageDiv" style="display: none"></div>
         <div class="radio-group">
           <input type="radio" id="student" name="role" value="student" />
@@ -24,34 +22,29 @@
         <label for="student" class="stud"> As Student</label>
         <div class="input-group">
           <i class="fas fa-user"></i>
-          <input type="text" id="fName" placeholder="First Name" required />
-          <label for="fname">First Name</label>
+          <input type="text" id="fName" name="fName" placeholder="First Name" required />
+          <label for="fName">First Name</label>
         </div>
         <div class="input-group">
           <i class="fas fa-user"></i>
-          <input type="text" id="lName" placeholder="Last Name" required />
+          <input type="text" id="lName" name="lName" placeholder="Last Name" required />
           <label for="lName">Last Name</label>
         </div>
         <div id="collegeNameContainer" style="display: none">
-          <div class="input-group">
+          <div class="input-group"> 
             <i class="fas fa-building"></i>
-            <input type="text" id="collegeName" placeholder="College Name" />
+            <input type="text" id="collegeName" name="collegeName" placeholder="College Name" />
             <label for="collegeName">College Name</label>
           </div>
         </div>
         <div class="input-group">
           <i class="fas fa-envelope"></i>
-          <input type="email" id="rEmail" placeholder="Email" required />
+          <input type="email" id="rEmail" name="rEmail" placeholder="Email" required />
           <label for="rEmail">Email</label>
         </div>
         <div class="input-group">
           <i class="fas fa-lock"></i>
-          <input
-            type="password"
-            id="rPassword"
-            placeholder="Password"
-            required
-          />
+          <input type="password" id="rPassword" name="rPassword" placeholder="Password" required />
           <label for="rPassword">Password</label>
         </div>
         <button class="btn" id="submitSignUp">Sign Up</button>
@@ -69,22 +62,16 @@
 
     <div class="container" id="signIn">
       <h1 class="form-title">Sign In</h1>
-      <form>
+      <form method="post" action="{{ url_for('login') }}">
         <div id="signInMessage" class="messageDiv" style="display: none"></div>
-
         <div class="input-group">
           <i class="fas fa-envelope"></i>
-          <input type="email" id="email" placeholder="Email" required />
+          <input type="email" id="email" name="email" placeholder="Email" required />
           <label for="email">Email</label>
         </div>
         <div class="input-group">
           <i class="fas fa-lock"></i>
-          <input
-            type="password"
-            id="password"
-            placeholder="Password"
-            required
-          />
+          <input type="password" id="password" name="password" placeholder="Password" required />
           <label for="password">Password</label>
         </div>
         <p class="recover">
@@ -93,11 +80,13 @@
         <button class="btn" id="submitSignIn">Sign In</button>
       </form>
       <p class="or">----------or--------</p>
+      <br>
+      <p class="or"><a href="{{ url_for('optimize_route') }}">OptimizedRoute</a></p>
       <div class="icons">
         <i class="fab fa-google" id="googleSignInButton"></i>
       </div>
       <div class="links">
-        <p>Don't have account yet?</p>
+        <p>Don't have an account yet?</p>
         <button id="signUpButton">Sign Up</button>
       </div>
     </div>

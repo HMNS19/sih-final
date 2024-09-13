@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dumpsites</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dump.css') }}" />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-links">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('aboutus') }}">About</a>
+        <a href="{{ url_for('dump') }}">Dumpsites</a>
+        <a href="{{ url_for('pickup') }}">Pickup</a>
+        <a href="{{ url_for('litter') }}">BlackSpot</a>
+        <div class="dropdown">
+          <a>Bins</a>
+          <div class="dropdown-content">
+            <a href="{{ url_for('add_bin') }}">Add a Bin</a>
+            <a href="{{ url_for('viewbin') }}">View Bins</a>
+          </div>
+        </div>
+        <a href="{{ url_for('contactus') }}">Contact</a>
+      </div>
+      <a href="{{ url_for('login') }}" class="download-btn">Logout</a>
+    </nav>
+
+    <div class="map-container">
+      <iframe
+        src="https://www.google.com/maps/d/embed?mid=1ANTIXYWjPK8bqLlB7hGopl8Q2f94pCY&ehbc=2E312F"
+      ></iframe>
+    </div>
+  </body>
+</html>

@@ -26,51 +26,48 @@
   </nav>
 </body>
 </html> -->
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Making Cities Sustainable</title>
-    <link rel="stylesheet" href="./css/home.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}" />
   </head>
   <body>
     <!-- Navigation Bar -->
     <nav>
       <div class="nav-links">
-        <a href="./home.html">Home</a>
-        <a href="./aboutus.html">About</a>
-        <a href="./dump.html">Dumpsites</a>
-        <a href="./pickup.html">Pickup</a>
-        <a href="./litter.html">BlackSpot</a>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('aboutus') }}">About</a>
+        <a href="{{ url_for('dump') }}">Dumpsites</a>
+        <a href="{{ url_for('pickup') }}">Pickup</a>
+        <a href="{{ url_for('litter') }}">BlackSpot</a>
         <div class="dropdown">
           <a>Bins</a>
           <div class="dropdown-content">
-            <a href="./add_Bin.html">Add a Bin</a>
-            <a href="./viewbin.html">View Bins</a>
+            <a href="{{ url_for('add_bin') }}">Add a Bin</a>
+            <a href="{{ url_for('viewbin') }}">View Bins</a>
           </div>
         </div>
-        <a href="./contactus.html">Contact</a>
+        <a href="{{ url_for('contactus') }}">Contact</a>
       </div>
-      <a href="./login.html" class="download-btn">Logout</a>
+      <a href="{{ url_for('login') }}" class="download-btn">Logout</a>
     </nav>
 
     <!-- Header Section -->
-    <body>
-      <div class="header">
-       <div class="header-text">
-        <h1>
-         Making Cities Sustainable and Rewarding
-        </h1>
-        <p>
-         It's not just an app. It's a movement to better our cities.
-        </p>
-        <button>
-         Download Our App
-        </button>
-       </div>
-       <img alt="Person recycling a plastic bottle into a recycling bin" height="400" src="./images/home.webp" width="700"/>
+    <div class="header">
+      <div class="header-text">
+        <h1>Making Cities Sustainable and Rewarding</h1>
+        <p>It's not just an app. It's a movement to better our cities.</p>
+        <button>Download Our App</button>
       </div>
+      <img
+        src="{{ url_for('static', filename='images/home.webp') }}"
+        alt="Person recycling a plastic bottle into a recycling bin"
+        height="400"
+        width="700"
+      />
+    </div>
   </body>
 </html>

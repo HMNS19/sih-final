@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Schedule A Pickup, NOW!</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/pickup.css') }}" />
+    <script type="module" src="{{ url_for('static', filename='js/pickup.js') }}"></script>
+  </head>
+  <body>
+    <!-- Navigation bar -->
+    <nav>
+      <div class="nav-links">
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('aboutus') }}">About</a>
+        <a href="{{ url_for('dump') }}">Dumpsites</a>
+        <a href="{{ url_for('pickup') }}">Pickup</a>
+        <a href="{{ url_for('litter') }}">BlackSpot</a>
+        <div class="dropdown">
+          <a>Bins</a>
+          <div class="dropdown-content">
+            <a href="{{ url_for('add_bin') }}">Add a Bin</a>
+            <a href="{{ url_for('viewbin') }}">View Bins</a>
+          </div>
+        </div>
+        <a href="{{ url_for('contactus') }}">Contact</a>
+      </div>
+      <a href="{{ url_for('login') }}" class="download-btn">Logout</a>
+    </nav>
+
+    <!-- Schedule Pickup Form -->
+    <h1 style="text-align: center; margin-bottom: 20px">Schedule</h1>
+    <form id="pickupForm" method="POST" action="{{ url_for('pickup') }}">
+      <div class="alert">Your pickup is scheduled</div>
+
+      <!-- Personal Details Section -->
+      <h2>Personal Details</h2>
+      <label for="name">Name</label><br />
+      <input type="text" id="name" placeholder="Your Name" required="required" /><br />
+
+      <label for="email">Email</label><br />
+      <input id="email" type="email" placeholder="Your Email" required="required" /><br />
+
+      <label for="phone">Phone Number</label><br />
+      <input id="phone" type="text" placeholder="Your Phone number" required="required" /><br />
+
+      <!-- Pickup Details Section -->
+      <h2>Pickup Details</h2>
+      <label for="date">Date for pickup</label><br />
+      <input class="date_pickup" type="date" id="date" placeholder="dd-mm-yyyy" required="required" /><br />
+
+      <label for="time">Estimated Time pickup</label><br />
+      <input id="time" type="time" placeholder="hh:mm" required="required" /><br />
+
+      <label for="Address">Address for Pickup</label><br />
+      <textarea id="Address" type="text" placeholder="Your Address" required="required"></textarea><br />
+
+      <!-- Waste Details Section -->
+      <h3>Recyclable Waste Details</h3>
+
+      <label for="waste_type">Type of waste: </label><br />
+      <select id="waste_type" class="waste_type" required="required">
+        <option value="" disabled="disabled" selected="selected">Please select the type of waste</option>
+        <option value="paper">Paper (old newspapers, magazines, etc)</option>
+        <option value="plastic">Plastic (plastic bottles, styrofoam products, etc)</option>
+        <option value="metal">Metal (old utensils, cola cans, etc)</option>
+      </select><br />
+
+      <label for="quantity">Estimated Quantity of waste: </label><br />
+      <select id="quantity" class="quantity" required="required">
+        <option value="" disabled="disabled" selected="selected">Please select an estimate range</option>
+        <option value="1-5 kgs">1 - 5 kilograms</option>
+        <option value="5-10 kgs">5 - 10 kilograms</option>
+        <option value="above 10 kgs">Above 10 kilograms</option>
+      </select><br />
+
+      <button type="submit" id="pickup">Submit</button>
+    </form>
+  </body>
+</html>

@@ -3,27 +3,27 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/add_bin.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/add_bin.css') }}" />
     <title>Add a Bin</title>
   </head>
   <body>
     <nav>
       <div class="nav-links">
-        <a href="./home.html">Home</a>
-        <a href="./aboutus.html">About</a>
-        <a href="./dump.html">Dumpsites</a>
-        <a href="./pickup.html">Pickup</a>
-        <a href="./litter.html">BlackSpot</a>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('aboutus') }}">About</a>
+        <a href="{{ url_for('dump') }}">Dumpsites</a>
+        <a href="{{ url_for('pickup') }}">Pickup</a>
+        <a href="{{ url_for('litter') }}">BlackSpot</a>
         <div class="dropdown">
           <a>Bins</a>
           <div class="dropdown-content">
-            <a href="./add_Bin.html">Add a Bin</a>
-            <a href="./viewbin.html">View Bins</a>
+            <a href="{{ url_for('add_bin') }}">Add a Bin</a>
+            <a href="{{ url_for('viewbin') }}">View Bins</a>
           </div>
         </div>
-        <a href="./contactus.html">Contact</a>
+        <a href="{{ url_for('contactus') }}">Contact</a>
       </div>
-      <a href="./login.html" class="download-btn">Logout</a>
+      <a href="{{ url_for('login') }}" class="download-btn">Logout</a>
     </nav>
     <h1>Add a Bin</h1>
     <p id="detail">

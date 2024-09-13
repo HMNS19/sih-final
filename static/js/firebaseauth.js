@@ -58,7 +58,7 @@ signUp.addEventListener("click", (event) => {
       saveInfo(email,firstName,lastName,clgname)
       showMessage("Account Created Successfully", "signUpMessage");
       setTimeout(() => {
-        window.location.href = "home.html";
+        window.location.href = "/";
       }, 2000); // 2000 milliseconds = 2 seconds
     })
     .catch((error) => {
@@ -102,7 +102,7 @@ document.getElementById("googleSignInButton").addEventListener("click", () => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
-      window.location.href = "home.html";
+      window.location.href = "/";
     })
     .catch((error) => {
       const errorCode = error.code;
@@ -125,7 +125,7 @@ signIn.addEventListener("click", (event) => {
       showMessage("login is successful", "signInMessage");
       const user = userCredential.user;
       localStorage.setItem("loggedInUserId", user.uid);
-      window.location.href = "home.html";
+      window.location.href = "/";
     })
     .catch((error) => {
       const errorCode = error.code;
