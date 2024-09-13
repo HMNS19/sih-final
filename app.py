@@ -70,9 +70,9 @@ def solve_tsp(distance_matrix):
         return None
 
 # Routes for optimization and calculation
-@app.route('/optimized_route')
+@app.route('/optimize_route')
 def optimize_route():
-    return render_template('optimized_route.html')
+    return render_template('optimize_route.html')
 
 @app.route('/calculate', methods=['POST'])
 def calculate():
