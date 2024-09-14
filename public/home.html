@@ -34,12 +34,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Making Cities Sustainable</title>
     <link rel="stylesheet" href="./css/home.css" />
-    <script type="module" src="./index.js"></script>
-    <script type="module" src="contactus.js"></script>
   </head>
   <body>
+    <script type="module" src="./index.js"></script>
     <!-- Navigation Bar -->
-    <nav>
+    <nav id="navbar">
       <div class="nav-links">
         <a href="./home.html">Home</a>
         <a href="./aboutus.html">About</a>
@@ -104,7 +103,7 @@
        </div>
        <div class="container2">
         <div class="card">
-         <img alt="Green residential waste bin" height="100" src="./images/image.jpeg" width="100"/>
+         <img alt="Green residential waste bin" height="200" src="./images/image.jpeg" width="100"/>
          <h3>
           Segregation of Waste
          </h3>
@@ -118,29 +117,31 @@
          </a>
         </div>
         <div class="card">
-         <img alt="Green commercial waste dumpster" height="100" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-LmQ09WWGIGwOeeA4ArnRw0x5/user-uJPET5fjNenSso8wCETWVNOp/img-Y53ieaZApGRbzVV8j9rfz0c4.png?st=2024-09-14T08%3A17%3A02Z&amp;se=2024-09-14T10%3A17%3A02Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-13T23%3A19%3A08Z&amp;ske=2024-09-14T23%3A19%3A08Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=YF1r9PsS1B3B6mYOpaCC5pvO/FgS2tAQQyaeJRWF1Vg%3D" width="100"/>
+         <img alt="Green commercial waste dumpster" height="100" src="./images/h.png" width="100"/>
          <h3>
           Hazardous Waste
          </h3>
          <p>
-          Dispose of hazardous waste at designated facilities, recycling centers for e-waste, and local programs for medical waste.
+          Dispose of hazardous waste at designated facilities, recycling centers for e-waste.
          </p>
          <p>Improper disposal contaminates soil, water, and air, leading to pollution and ecological damage.</p>
          <p>Exposure to improperly disposed hazardous waste can cause serious health issues and poison wildlife.</p>
-         <a href="./hazardous.html">
-          Get Commercial Waste Service
+         <a class="btn" href="./hazardous.html">
+          Read More
          </a>
         </div>
         <div class="card">
-         <img alt="Green roll-off dumpster" height="100" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-LmQ09WWGIGwOeeA4ArnRw0x5/user-uJPET5fjNenSso8wCETWVNOp/img-5Ag5rwh1fSxr1UzNmslNdmeG.png?st=2024-09-14T08%3A17%3A03Z&amp;se=2024-09-14T10%3A17%3A03Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-13T23%3A08%3A04Z&amp;ske=2024-09-14T23%3A08%3A04Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=Gz1cKyKwUYb3iVgQPD84s%2BrOZ760Vw%2BowOSswIEwnEY%3D" width="100"/>
+         <img alt="Green roll-off dumpster" height="100" src="./images/ind.png" width="100"/>
          <h3>
-          Roll-Off Dumpsters
+          Effective Waste Management in India
          </h3>
          <p>
-          From quick cleanouts to large renovations, WM has a dumpster that's perfect for your project.
+          Waste generation will reach 165 million tonnes by 2030.
          </p>
-         <a href="#">
-          Rent a Roll-Off Dumpster
+         <p>Inadequate infrastructure, poor recycling, and e-waste growth.</p>
+         <p> Invest in technology, improve recycling, and raise public awareness.</p>
+         <a class="btn" href="./stats.html">
+          Read More
          </a>
         </div>
        </div>
@@ -163,17 +164,57 @@
             <strong>Email :</strong> sunny@gmail.com
           </p>
         </div>
-        <div id="contactusForm" class="contact-form">
-            <div class="alert">Thank you for the feedback!</div>
-            <input id="name" type="text" placeholder="Your Name" />
-            <input id="email" type="email" placeholder="Your email" />
-            <input id="phone" type="text" placeholder="Phone" />
-            <input id="subject" type="text" placeholder="Subject" />
-            <textarea id="msg" placeholder="message"></textarea>
-            <button id="contact" type="submit">Send Message</button>
-          </form>
-        </div>
+        <form id="contactusForm" class="contact-form">
+          <div class="alert">Thank you for the feedback!</div>
+          <input id="name" type="text" placeholder="Your Name" />
+          <input id="email" type="email" placeholder="Your email" />
+          <input id="phone" type="text" placeholder="Phone" />
+          <input id="subject" type="text" placeholder="Subject" />
+          <textarea id="msg" placeholder="message"></textarea>
+          <button id="contact" type="submit">Send Message</button>
+        </form>
       </div>
     </div>
+    <footer>
+      <div class="footerup">
+        <div class="logoleft">
+          <span>Making Cities Sustainable and Rewarding.
+         It's a movement to better our cities.
+          </span>
+        </div>
+        <div class="finfo">
+          <h3>Reach us</h3>
+          <div class="reach-us">
+            <p><img src="images\email.png" alt="email">
+              Email:sunnyproject@gmail.com</p>
+            <p><img src="images\smartphone.png" alt="phone">
+              Phone:+91 9999999999</p>
+            <p><img src="images\pin.png" alt="location">
+              Location:Bangalore</p>
+          </div>
+        </div>
+        <div class="quicklinks">
+          <ul>
+            <li>
+              <h3>Quicklinks</h3>
+            </li>
+        <li><a href="./aboutus.html">About</a></li>
+        <li><a href="./dump.html">Dumpsites</a></li>
+        <li><a href="./litter.html">BlackSpot</a></li>
+        <li><a href="./viewbin.html">Bins</a></li>
+                </ul>
+        </div>
+      </div>
+      <div class="footerdown">
+        <div class="copyrights">
+          <p>
+            <script type="text/javascript">
+              document.write(new Date().getFullYear());
+            </script>&copy RecyClean.
+          All Rights Reserved.  
+          </p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
