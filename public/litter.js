@@ -1,10 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
-// https://firebase.google.com/docs/web/setup#available-libraries
-import {
-  getDatabase,
-  set,
-  ref,
-} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
+import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-storage.js";
+import { getDatabase, ref as dbRef, push, set } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCui4rUSBEeRa0pYFzPBkvFd4amdfCAlM4",
@@ -18,53 +14,63 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const storage = getStorage(app);
+const database = getDatabase(app);
 
-// Event listener for form submission
+let uploadedImageURL = '';
 
-//abhinav-location
+async function uploadImage() {
+  const fileInput = document.getElementById("fileInput");
+  const file = fileInput.files[0];
 
-document.getElementById("submitLitter").addEventListener("click", submitForm);
-
-function submitForm(e) {
-  e.preventDefault();
-
-  navigator.geolocation.getCurrentPosition(
-    (position) => {
-      const { latitude, longitude, accuracy } = position.coords;
-
-      const landmark = getElementVal("landmark");
-      const description = getElementVal("description");
-      console.log(latitude, longitude, accuracy, landmark, description);
-      console.log("hi");
-
-      saveMessages(latitude, longitude, accuracy, landmark, description);
-    },
-    (error) => {
-      console.error("Error getting location:", error);
+  if (file) {
+    try {
+      const imageRef = storageRef(storage, `uploaded_images/${file.name}`);
+      await uploadBytes(imageRef, file);
+      uploadedImageURL = await getDownloadURL(imageRef);
+      const imagePreview = document.getElementById("imagePreview");
+      imagePreview.src = uploadedImageURL;
+      console.log("Image uploaded successfully:", uploadedImageURL);
+    } catch (error) {
+      console.error("Error uploading image:", error);
     }
-  );
-
-  // Enable alert
-  document.querySelector(".alert").style.display = "block";
-
-  // Remove the alert and reset the form
-  setTimeout(() => {
-    document.querySelector(".alert").style.display = "none";
-    document.getElementById("litterform").reset();
-  }, 3000);
+  } else {
+    console.error("No file selected");
+  }
 }
 
-const getElementVal = (id) => {
-  return document.getElementById(id).value;
-};
+const uploadButton = document.getElementById("uploadImage");
+uploadButton.addEventListener("click", uploadImage);
 
-const saveMessages = (latitude, longitude, accuracy, landmark, description) => {
-  const blackspotDB = getDatabase(app);
-  set(ref(blackspotDB, "litters/" + landmark), {
-    latitude: latitude,
-    longitude: longitude,
-    accuracy: accuracy,
-    landmark: landmark,
-    description: description,
+document.getElementById("litterForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const pincodeValue = document.getElementById("pincode").value;
+  const descriptionValue = document.getElementById("description").value;
+
+  if (!pincodeValue || !descriptionValue || !uploadedImageURL) {
+    console.error("Please fill all fields and upload an image");
+    return;
+  }
+
+  const blackspotRef = dbRef(database, 'litters');
+  const newBlackspotRef = push(blackspotRef);
+
+  set(newBlackspotRef, {
+    pincode: pincodeValue,
+    description: descriptionValue,
+    imageURL: uploadedImageURL,
+    timestamp: Date.now()
+  })
+  .then(() => {
+    console.log("Data saved successfully!");
+    alert("Submission successful!");
+    document.getElementById("litterForm").reset();
+    document.getElementById("imagePreview").src = "";
+    uploadedImageURL = '';
+  })
+  .catch((error) => {
+    console.error("Error saving data:", error);
+    alert("Error submitting data. Please try again.");
   });
-};
+});

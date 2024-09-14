@@ -33,14 +33,14 @@
     <p id="detail">
       Please enable location access to determine your current location
     </p>
-    <form id="litterform">
+    <form id="litterForm">
       <div class="alert">Thanks for creating a greener environment.</div>
 
       <h2>Upload an Image</h2>
       <section class="container">
         <div class="dropzone" id="imageUploader">
           <input type="file" id="fileInput" accept="image/*" />
-          <button id="uploadImage">Upload Image</button>
+          <button type="button" id="uploadImage">Upload Image</button>
         </div>
         <aside>
           <h4>Image</h4>
@@ -49,12 +49,12 @@
         <img id="imagePreview" src="" alt="Image Preview" />
       </section>
       <div class="form-container">
-        <label for="landmark">Landmark</label>
+        <label for="pincode">Pincode</label>
         <input
           type="text"
-          id="landmark"
-          name="landmark"
-          placeholder="landmark"
+          id="pincode"
+          name="pincode"
+          placeholder="Enter pincode"
         />
 
         <label for="description">Description</label>
@@ -62,7 +62,7 @@
           id="description"
           name="description"
           rows="4"
-          placeholder="landmark"
+          placeholder="Description"
         ></textarea>
         <button type="submit" id="submitLitter">Submit</button>
       </div>
