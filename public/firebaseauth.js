@@ -3,9 +3,11 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/fireba
 import {createUserWithEmailAndPassword,signInWithEmailAndPassword,getAuth,signInWithPopup,GoogleAuthProvider,} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
 
 import { getFirestore,collection, addDoc ,getDocs,doc,setDoc} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
+
 const firebaseConfig = {
   apiKey: "AIzaSyCui4rUSBEeRa0pYFzPBkvFd4amdfCAlM4",
   authDomain: "reactdemo-84e45.firebaseapp.com",
+  databaseURL: "https://reactdemo-84e45-default-rtdb.firebaseio.com",
   projectId: "reactdemo-84e45",
   storageBucket: "reactdemo-84e45.appspot.com",
   messagingSenderId: "921002504696",
@@ -74,7 +76,7 @@ signUp.addEventListener("click", (event) => {
 async function saveInfo(email,firstName,lastName,clgname){
   try {
     const db = getFirestore(app);
-    const docRef = doc(db, "users", email);
+    const docRef = doc(db, "users", user.uid);
 await setDoc(docRef, {
   email: email,
   firstName: firstName,
@@ -94,7 +96,7 @@ await setDoc(docRef, {
   }
    
 
-
+//---------------------------------------------
 
 document.getElementById("googleSignInButton").addEventListener("click", () => {
   signInWithPopup(auth, provider)
@@ -102,7 +104,11 @@ document.getElementById("googleSignInButton").addEventListener("click", () => {
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user = result.user;
-      window.location.href = "home.html";
+
+      //for fetching username
+       //console.log(user.email);
+      
+      //window.location.href = "home.html";
     })
     .catch((error) => {
       const errorCode = error.code;

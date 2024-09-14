@@ -17,20 +17,21 @@ import{getFirestore, getDoc, doc} from "https://www.gstatic.com/firebasejs/10.13
   const app = initializeApp(firebaseConfig);
 
   const auth=getAuth(app);
-  const db=getFirestore();
+  const db=getFirestore(app);
 
   onAuthStateChanged(auth, (user)=>{
     const loggedInUserId=localStorage.getItem('loggedInUserId');
     if(loggedInUserId){
         console.log(user);
-        const docRef = doc(db, "users", loggedInUserId);
+        console.log(user.email)
+        const docRef = doc(db, "users", user.uid);
+        console.log(docRef)
         getDoc(docRef)
         .then((docSnap)=>{
             if(docSnap.exists()){
                 const userData=docSnap.data();
-                document.getElementById('loggedUserFName').innerText=userData.firstName;
-                document.getElementById('loggedUserEmail').innerText=userData.email;
-                document.getElementById('loggedUserLName').innerText=userData.lastName;
+                console.log(userData.firstName);
+                
 
             }
             else{
