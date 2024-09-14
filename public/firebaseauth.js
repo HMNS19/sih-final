@@ -1,8 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js";
-import {createUserWithEmailAndPassword,signInWithEmailAndPassword,getAuth,signInWithPopup,GoogleAuthProvider,} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
-
-import { getFirestore,collection, addDoc ,getDocs,doc,setDoc} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, getAuth, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
+import { getDatabase, ref as dbRef, set } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCui4rUSBEeRa0pYFzPBkvFd4amdfCAlM4",
@@ -18,27 +17,26 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const provider = new GoogleAuthProvider();
+const database = getDatabase(app);
 
-
-
+// Function to show messages
 function showMessage(message, divId) {
-  var messageDiv = document.getElementById(divId);
-
-  // Style adjustments for left alignment and red font:
+  const messageDiv = document.getElementById(divId);
   messageDiv.style.cssText = `
     display: block;
     opacity: 1;
     color: red;
-    text-align: left; /* Ensures left alignment */
-    transition: opacity 1s ease-out; /* Smooth fade-out animation */
+    text-align: left;
+    transition: opacity 1s ease-out;
   `;
   messageDiv.innerHTML = message;
 
-  // Fade-out after 5 seconds:
-  setTimeout(function () {
+  setTimeout(() => {
     messageDiv.style.opacity = 0;
   }, 5000);
 }
+
+// Sign up event listener
 const signUp = document.getElementById("submitSignUp");
 signUp.addEventListener("click", (event) => {
   event.preventDefault();
@@ -48,16 +46,12 @@ signUp.addEventListener("click", (event) => {
   const lastName = document.getElementById("lName").value;
   const clgname = document.getElementById("collegeName").value;
 
-  createUserWithEmailAndPassword(auth, email, password,firstName,lastName,clgname)
+  createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      const userData = {
-        email: email,
-        firstName: firstName,
-        lastName: lastName,
-        clgname: clgname,
-      };
-      saveInfo(email,firstName,lastName,clgname)
+      const sanitizedEmail = email.replace(/\./g, '_'); // Sanitize email to use as a key
+
+      saveInfo(sanitizedEmail, firstName, lastName, clgname);
       showMessage("Account Created Successfully", "signUpMessage");
       setTimeout(() => {
         window.location.href = "home.html";
@@ -65,39 +59,33 @@ signUp.addEventListener("click", (event) => {
     })
     .catch((error) => {
       const errorCode = error.code;
-      if (errorCode == "auth/email-already-in-use") {
+      if (errorCode === "auth/email-already-in-use") {
         showMessage("Email Address Already Exists !!!", "signUpMessage");
       } else {
-        showMessage("unable to create User", "signUpMessage");
+        showMessage("Unable to create User", "signUpMessage");
       }
     });
 });
 
-async function saveInfo(email,firstName,lastName,clgname){
+// Function to save user info
+async function saveInfo(emailKey, firstName, lastName, clgname) {
   try {
-    const db = getFirestore(app);
-    const docRef = doc(db, "users", user.uid);
-await setDoc(docRef, {
-  email: email,
-  firstName: firstName,
-  lastName: lastName,
-  clgname: clgname,
-  points:100
-}), 
-    console.log("Document written with ID: ", docRef.id);
-  } catch (e) {
-    console.error("Error adding document: ", e);
+    const userRef = dbRef(database, `users/${emailKey}`);
+    await set(userRef, {
+      email: emailKey.replace(/_/g, '.'), // Convert back to original email format
+      firstName: firstName,
+      lastName: lastName,
+      clgname: clgname,
+      points: 100
+    });
+    console.log("Data saved successfully!");
+  } catch (error) {
+    console.error("Error saving data:", error);
+    alert("Error submitting data. Please try again.");
   }
-  // const querySnapshot = await getDocs(collection(db, "users"));
-  // querySnapshot.forEach((doc) => {
-  //   console.log(`${doc.id} => ${doc.data()}`);
-  // });
-  
-  }
-   
+}
 
-//---------------------------------------------
-
+// Google Sign-In event listener
 document.getElementById("googleSignInButton").addEventListener("click", () => {
   signInWithPopup(auth, provider)
     .then((result) => {
@@ -105,9 +93,6 @@ document.getElementById("googleSignInButton").addEventListener("click", () => {
       const token = credential.accessToken;
       const user = result.user;
 
-      //for fetching username
-       //console.log(user.email);
-      
       window.location.href = "home.html";
     })
     .catch((error) => {
@@ -115,20 +100,20 @@ document.getElementById("googleSignInButton").addEventListener("click", () => {
       const errorMessage = error.message;
       const email = error.customData.email;
       const credential = GoogleAuthProvider.credentialFromError(error);
-      // ...
+      // Handle errors
     });
 });
 
+// Sign in event listener
 const signIn = document.getElementById("submitSignIn");
 signIn.addEventListener("click", (event) => {
   event.preventDefault();
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
-  const auth = getAuth();
 
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      showMessage("login is successful", "signInMessage");
+      showMessage("Login is successful", "signInMessage");
       const user = userCredential.user;
       localStorage.setItem("loggedInUserId", user.uid);
       window.location.href = "home.html";
@@ -143,28 +128,25 @@ signIn.addEventListener("click", (event) => {
     });
 });
 
+// Sign up/sign in form toggle
 const signUpButton = document.getElementById("signUpButton");
 const signInButton = document.getElementById("signInButton");
 const signInForm = document.getElementById("signIn");
 const signUpForm = document.getElementById("signup");
 
-signUpButton.addEventListener("click", function () {
+signUpButton.addEventListener("click", () => {
   signInForm.style.display = "none";
   signUpForm.style.display = "block";
 });
-signInButton.addEventListener("click", function () {
+signInButton.addEventListener("click", () => {
   signInForm.style.display = "block";
   signUpForm.style.display = "none";
 });
 
-//hi
+// Toggle college name input based on student checkbox
 const asStudent = document.getElementById("student");
 const collegeNameContainer = document.getElementById("collegeNameContainer");
 
 asStudent.addEventListener("change", (e) => {
-  if (e.target.checked) {
-    collegeNameContainer.style.display = "block";
-  } else {
-    collegeNameContainer.style.display = "none";
-  }
+  collegeNameContainer.style.display = e.target.checked ? "block" : "none";
 });

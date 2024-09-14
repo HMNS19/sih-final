@@ -5,14 +5,11 @@ import {
   signOut,
 } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js";
 import {
-  getFirestore,
-  getDoc,
-  doc,
-} from "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js";
-import {
   getDatabase,
-  set,
   ref,
+  set,
+  get,
+  child,
 } from "https://www.gstatic.com/firebasejs/10.13.1/firebase-database.js";
 
 const firebaseConfig = {
@@ -28,29 +25,30 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
-const db = getFirestore(app);
+const db = getDatabase(app);
 
 onAuthStateChanged(auth, (user) => {
   const loggedInUserId = localStorage.getItem("loggedInUserId");
   if (loggedInUserId) {
     console.log(user);
     console.log(user.email);
-    const docRef = doc(db, "users", user.uid);
-    console.log(docRef);
-    getDoc(docRef)
-      .then((docSnap) => {
-        if (docSnap.exists()) {
-          const userData = docSnap.data();
-          console.log(userData.firstName);
+
+    // Accessing user data from Realtime Database
+    const dbRef = ref(db);
+    get(child(dbRef, `users`))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+          const userData = snapshot.val();
+          console.log(userData.firstName); // Access firstName in Realtime Database
         } else {
-          console.log("no document found matching id");
+          console.log("No data available for this user");
         }
       })
       .catch((error) => {
-        console.log("Error getting document");
+        console.error("Error getting data:", error);
       });
   } else {
-    console.log("User Id not Found in Local storage");
+    console.log("User Id not found in Local Storage");
   }
 });
 
@@ -66,7 +64,6 @@ logoutButton.addEventListener("click", () => {
       console.error("Error Signing out:", error);
     });
 });
-
 document.getElementById("contact").addEventListener("click", submitForm);
 
 function submitForm(e) {
