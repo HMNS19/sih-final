@@ -157,6 +157,7 @@ signInButton.addEventListener("click", function () {
   signUpForm.style.display = "none";
 });
 
+//hi
 const asStudent = document.getElementById("student");
 const collegeNameContainer = document.getElementById("collegeNameContainer");
 
