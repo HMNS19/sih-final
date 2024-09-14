@@ -108,7 +108,7 @@ document.getElementById("googleSignInButton").addEventListener("click", () => {
       //for fetching username
        //console.log(user.email);
       
-      //window.location.href = "home.html";
+      window.location.href = "home.html";
     })
     .catch((error) => {
       const errorCode = error.code;
