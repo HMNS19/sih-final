@@ -22,10 +22,6 @@ body {
   padding: 0 10px;
 }
 
-.nav-links a:hover {
-  text-decoration: underline;
-}
-
 .nav-extras {
   display: flex;
   align-items: center;

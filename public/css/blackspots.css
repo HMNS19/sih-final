@@ -1,91 +1,88 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 20px;
-    background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f4f4f4;
 }
 /* Add these styles to your home.css */
 
 #navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #333;
-    color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
 }
 
 .nav-links a {
-    color: white;
-    text-decoration: none;
-    padding: 0 10px;
-}
-
-.nav-links a:hover {
-    text-decoration: underline;
+  color: white;
+  text-decoration: none;
+  padding: 0 10px;
 }
 
 .nav-extras {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .points-display {
-    margin-right: 20px;
-    font-size: 16px;
-    font-weight: bold;
+  margin-right: 20px;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .download-btn {
-    color: white;
-    background-color: #007bff;
-    padding: 10px 20px;
-    border: none;
-    text-decoration: none;
-    border-radius: 5px;
+  color: white;
+  background-color: #007bff;
+  padding: 10px 20px;
+  border: none;
+  text-decoration: none;
+  border-radius: 5px;
 }
 
 .download-btn:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 h1 {
-    text-align: center;
-    margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 input[type="text"] {
-    padding: 10px;
-    margin-right: 10px;
-    font-size: 16px;
+  padding: 10px;
+  margin-right: 10px;
+  font-size: 16px;
 }
 
 button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 button:hover {
-    background-color: #218838;
+  background-color: #218838;
 }
 
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
 }
 
-th, td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: center;
+th,
+td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
 }
 
 th {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
