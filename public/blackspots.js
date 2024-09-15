@@ -47,6 +47,7 @@ function fetchPincodeData(pincode) {
         }
 
         updateTable(pincodeFrequency, pincode);
+        //------------------
     });
 }
 
