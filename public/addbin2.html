@@ -1,196 +1,276 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <style>
-        .googlemap
-        {
-            margin : 0 auto;
-            height : 1000px;
-            width : 1000px;
-        }
-        .main_content
-        {
-            display: inline-block;
-            height: 100px;
-        }
-        .infowin
-        {
-            width:250px;
-            max-height:200px;
-            padding : 5px;
-            background: #ffffff;
-            display:inline-block;
-        }
-        .infowin_img
-        {
-            float:left;
-            margin:0;
-            width:70px;
-            height: 100%;
-            background: #000000;
-        }
-        .infowin_img > img
-        {
-            height: 100%;
-            width: 70px;
-        }
-        .infowin_content
-        {
-            float: left;
-            margin:0;
-            background: #000000;
-            height:100%;
-            width :180px;
-            color:white;
-            padding: 5px;
-            overflow: scroll;
-            -moz-box-sizing: border-box; 
-            -webkit-box-sizing: border-box; 
-            box-sizing: border-box;
-        }
-        .btn_div
-        {   
-            bottom: 0;
-            width: 100%;
-            margin: 0 auto;
-            text-align: center;
-        }
-        .button
-        {
-            padding: 3px;
-            width:100px;
-            color:white;
-            cursor:pointer;
-            border-radius: 5px;
-            text-align: center;
-            display: inline-block;
-        }
-        .edit_btn
-        {
-            border: 1px solid #277107;
-            background: #2e8608;
-        }
-        .edit_btn:hover
-        {
-            background: #206004;
-        }
-        .remove_btn
-        {
-            border: 1px solid #e54646;
-            border-radius: 5px;
-            background: #dd5f5f;
-        }
-        .remove_btn:hover
-        {
-            background: #e32424;
-        }
+      .googlemap {
+        margin: 0 auto;
+        height: 1000px;
+        width: 1000px;
+      }
+      .main_content {
+        display: inline-block;
+        height: 100px;
+      }
+      .infowin {
+        width: 250px;
+        max-height: 200px;
+        padding: 5px;
+        background: #ffffff;
+        display: inline-block;
+      }
+      .infowin_img {
+        float: left;
+        margin: 0;
+        width: 70px;
+        height: 100%;
+        background: #000000;
+      }
+      .infowin_img > img {
+        height: 100%;
+        width: 70px;
+      }
+      .infowin_content {
+        float: left;
+        margin: 0;
+        background: #000000;
+        height: 100%;
+        width: 180px;
+        color: white;
+        padding: 5px;
+        overflow: scroll;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      .btn_div {
+        bottom: 0;
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+      }
+      .button {
+        padding: 3px;
+        width: 100px;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+        text-align: center;
+        display: inline-block;
+      }
+      .edit_btn {
+        border: 1px solid #277107;
+        background: #2e8608;
+      }
+      .edit_btn:hover {
+        background: #206004;
+      }
+      .remove_btn {
+        border: 1px solid #e54646;
+        border-radius: 5px;
+        background: #dd5f5f;
+      }
+      .remove_btn:hover {
+        background: #e32424;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div id="googlemap" class="googlemap"></div>
     <div id="form" hidden>
       <table>
-          <tr><td>Name:</td> <td><input type='text' id='name'/> </td> </tr>
-          <tr><td>Description:</td> <td><input type='text' id='description'/> </td> </tr>
-          <tr><td>Image:</td> <td><input type='file' id='photo'/> </td> </tr>
-          <tr><td></td> <td><input type='button' value='Save' onclick="GoogleMap.saveLocation()"/> </td> </tr>
+        <tr>
+          <td>Name:</td>
+          <td><input type="text" id="name" /></td>
+        </tr>
+        <tr>
+          <td>Description:</td>
+          <td><input type="text" id="description" /></td>
+        </tr>
+        <tr>
+          <td>Image:</td>
+          <td><input type="file" id="photo" /></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>
+            <input
+              type="button"
+              value="Save"
+              onclick="GoogleMap.saveLocation()"
+            />
+          </td>
+        </tr>
       </table>
     </div>
     <div id="infowin" hidden>
-        <div class="infowin">
-            <div class="main_content">
-                <div class="infowin_img">
-                    <img src="dummy.jpg"> 
-                </div>
-                <div class="infowin_content">
-                    <span>PLACE_NAME</span><br>
-                    <span>PLACE_DESCRIPTION</span><br>
-                    <span>Added by : ADDED_BY</span>
-                </div>
-            </div>
-            <div class="btn_div">
-                <div class="button edit_btn" onclick="GoogleMap.editLocation()">Edit Location</div>
-                <div class="button remove_btn" onclick="GoogleMap.removeLocation()">Remove Location</div>
-            </div>
+      <div class="infowin">
+        <div class="main_content">
+          <div class="infowin_img">
+            <img src="dummy.jpg" />
+          </div>
+          <div class="infowin_content">
+            <span>PLACE_NAME</span><br />
+            <span>PLACE_DESCRIPTION</span><br />
+            <span>Added by : ADDED_BY</span>
+          </div>
         </div>
+        <div class="btn_div">
+          <div class="button edit_btn" onclick="GoogleMap.editLocation()">
+            Edit Location
+          </div>
+          <div class="button remove_btn" onclick="GoogleMap.removeLocation()">
+            Remove Location
+          </div>
+        </div>
+      </div>
     </div>
     <script>
-        var CommonUtil = (function(){
-            return {
-                getInputValue : function(id){
-                    return document.getElementById(id).value;
-                },
-                setInputValue : function(id, value){
-                    document.getElementById(id).value = value;
-                }
-            };
-        })();
-        var GoogleMap = (function(){
-            var map, selectedmarker, markers=[], infowindow;
-            var formcontent = document.getElementById("form").innerHTML,
-                detailscontent = document.getElementById("infowin").innerHTML;
+      var CommonUtil = (function () {
+        return {
+          getInputValue: function (id) {
+            return document.getElementById(id).value;
+          },
+          setInputValue: function (id, value) {
+            document.getElementById(id).value = value;
+          },
+        };
+      })();
 
-            return {
-                initialize : function(){
-                    map = new google.maps.Map(document.getElementById('googlemap'), {
-                        center: new google.maps.LatLng(12.971599, 77.594566), //Setting Initial Position
-                        zoom: 12,
-                    });
-                    map.addListener("click",function(event){
-                        GoogleMap.addLocation(event.latLng);
-                    })
-                },
-                addLocation : function(latlng){
-                    var marker = new google.maps.Marker({
-                        position: latlng,
-                        map: map,
-                        label: markers.length+1
-                    });
-                    marker.addListener("click",function(){
-                        selectedmarker=this;
-                        GoogleMap.showPlaceDetailsToUser(this);
-                    });
-                    GoogleMap.getPlaceDetailsFromUser(marker);
-                    markers.push(marker);
-                    selectedmarker=marker;
-                },
-                removeLocation : function(){
-                    markers.splice(markers.indexOf(selectedmarker),1);
-                    if(selectedmarker)
-                    {
-                        selectedmarker.setMap(null);
-                    }
-                },
-                editLocation : function(){
-                    GoogleMap.showPlaceDetailsToUser(selectedmarker,true);
-                    CommonUtil.setInputValue("name",selectedmarker.placeInfo.name);
-                    CommonUtil.setInputValue("description",selectedmarker.placeInfo.description);
-                    CommonUtil.setInputValue("photo",selectedmarker.placeInfo.photo);
-                },
-                saveLocation : function(){
-                    selectedmarker.placeInfo = selectedmarker.placeInfo || {};
-                    selectedmarker.placeInfo.name = CommonUtil.getInputValue("name")
-                    selectedmarker.placeInfo.description = CommonUtil.getInputValue("description");
-                    selectedmarker.placeInfo.photo = CommonUtil.getInputValue("photo");
-                    selectedmarker.placeInfo.addedBy = Math.random().toString(36).substr(2, 5);
-                    GoogleMap.showPlaceDetailsToUser(selectedmarker);
-                },
-                getPlaceDetailsFromUser : function(marker){
-                    GoogleMap.showInfoWindow(formcontent, marker);
-                },
-                showPlaceDetailsToUser : function(marker, isedit){
-                    var content = marker.placeInfo && !isedit ? detailscontent.replace("PLACE_NAME",marker.placeInfo.name||"NO_NAME").replace("PLACE_DESCRIPTION",marker.placeInfo.description||"NO_DESCRIPTION").replace("ADDED_BY",marker.placeInfo.addedBy) : formcontent;
-                    GoogleMap.showInfoWindow(content, marker);
-                },
-                showInfoWindow : function(content, marker){
-                    if(infowindow) infowindow.close();
+      var GoogleMap = (function () {
+        var map,
+          selectedmarker,
+          markers = [],
+          infowindow;
+        var formcontent = document.getElementById("form").innerHTML,
+          detailscontent = document.getElementById("infowin").innerHTML;
 
-                    infowindow = new google.maps.InfoWindow({content:content});
-                    infowindow.open(map, marker);
-                }
+        return {
+          initialize: function () {
+            map = new google.maps.Map(document.getElementById("googlemap"), {
+              center: new google.maps.LatLng(12.971599, 77.594566), //Setting Initial Position
+              zoom: 12,
+            });
+
+            // Load saved locations from localStorage
+            var savedLocations =
+              JSON.parse(localStorage.getItem("locations")) || [];
+            savedLocations.forEach(function (loc) {
+              var latlng = new google.maps.LatLng(loc.lat, loc.lng);
+              var marker = new google.maps.Marker({
+                position: latlng,
+                map: map,
+                label: markers.length + 1,
+              });
+              marker.placeInfo = loc.info;
+              marker.addListener("click", function () {
+                selectedmarker = this;
+                GoogleMap.showPlaceDetailsToUser(this);
+              });
+              markers.push(marker);
+            });
+
+            map.addListener("click", function (event) {
+              GoogleMap.addLocation(event.latLng);
+            });
+          },
+
+          addLocation: function (latlng) {
+            var marker = new google.maps.Marker({
+              position: latlng,
+              map: map,
+              label: markers.length + 1,
+            });
+
+            marker.addListener("click", function () {
+              selectedmarker = this;
+              GoogleMap.showPlaceDetailsToUser(this);
+            });
+
+            GoogleMap.getPlaceDetailsFromUser(marker);
+            markers.push(marker);
+            selectedmarker = marker;
+          },
+
+          saveLocation: function () {
+            selectedmarker.placeInfo = selectedmarker.placeInfo || {};
+            selectedmarker.placeInfo.name = CommonUtil.getInputValue("name");
+            selectedmarker.placeInfo.description =
+              CommonUtil.getInputValue("description");
+            selectedmarker.placeInfo.photo = CommonUtil.getInputValue("photo");
+            selectedmarker.placeInfo.addedBy = Math.random()
+              .toString(36)
+              .substr(2, 5);
+
+            GoogleMap.showPlaceDetailsToUser(selectedmarker);
+
+            // Save locations to localStorage
+            var locations = markers.map(function (marker) {
+              return {
+                lat: marker.getPosition().lat(),
+                lng: marker.getPosition().lng(),
+                info: marker.placeInfo,
+              };
+            });
+            localStorage.setItem("locations", JSON.stringify(locations));
+          },
+
+          removeLocation: function () {
+            markers.splice(markers.indexOf(selectedmarker), 1);
+            if (selectedmarker) {
+              selectedmarker.setMap(null);
             }
-        })();
+            var locations = markers.map(function (marker) {
+              return {
+                lat: marker.getPosition().lat(),
+                lng: marker.getPosition().lng(),
+                info: marker.placeInfo,
+              };
+            });
+            localStorage.setItem("locations", JSON.stringify(locations));
+          },
+
+          editLocation: function () {
+            GoogleMap.showPlaceDetailsToUser(selectedmarker, true);
+            CommonUtil.setInputValue("name", selectedmarker.placeInfo.name);
+            CommonUtil.setInputValue(
+              "description",
+              selectedmarker.placeInfo.description
+            );
+            CommonUtil.setInputValue("photo", selectedmarker.placeInfo.photo);
+          },
+
+          getPlaceDetailsFromUser: function (marker) {
+            GoogleMap.showInfoWindow(formcontent, marker);
+          },
+
+          showPlaceDetailsToUser: function (marker, isedit) {
+            var content =
+              marker.placeInfo && !isedit
+                ? detailscontent
+                    .replace("PLACE_NAME", marker.placeInfo.name || "NO_NAME")
+                    .replace(
+                      "PLACE_DESCRIPTION",
+                      marker.placeInfo.description || "NO_DESCRIPTION"
+                    )
+                    .replace("ADDED_BY", marker.placeInfo.addedBy)
+                : formcontent;
+            GoogleMap.showInfoWindow(content, marker);
+          },
+
+          showInfoWindow: function (content, marker) {
+            if (infowindow) infowindow.close();
+
+            infowindow = new google.maps.InfoWindow({ content: content });
+            infowindow.open(map, marker);
+          },
+        };
+      })();
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSJi4beLUlh5IDO7jySN7sMkqFf2RSp9Y&callback=GoogleMap.initialize" type="text/javascript"></script>
-</body>
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSJi4beLUlh5IDO7jySN7sMkqFf2RSp9Y&callback=GoogleMap.initialize"
+      type="text/javascript"
+      async
+      defer
+    ></script>
+  </body>
 </html>
