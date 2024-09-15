@@ -213,23 +213,27 @@
     </style>
   </head>
   <body>
-    <nav>
+    <nav id="navbar">
       <div class="nav-links">
         <a href="./home.html">Home</a>
         <a href="./aboutus.html">About</a>
         <a href="./dump.html">Dumpsites</a>
-        <a href="./pickup.html">Pickup</a>
+        <a href="https://trash--talk.blogspot.com/">Blog</a>
         <a href="./litter.html">BlackSpot</a>
         <div class="dropdown">
           <a>Bins</a>
           <div class="dropdown-content">
-            <a href="./add_Bin.html">Add a Bin</a>
-            <a href="./viewbin.html">View Bins</a>
+            <a href="./addbin2.html">Add and View Bins</a>
           </div>
         </div>
-        <a href="./contactus.html">Contact</a>
       </div>
-      <a href="./login.html" class="download-btn">Logout</a>
+      <div class="nav-extras">
+        <div class="points-display">
+          Points: <span id="user-points">0</span>
+        </div>
+
+        <a href="./login.html" class="download-btn" id="logout">Logout</a>
+      </div>
     </nav>
     <input type="text" id="searchInput" placeholder="Enter a location" />
     <button id="searchBtn">Search</button>
@@ -338,7 +342,6 @@
               position: latlng,
               map: map,
               label: markers.length + 1,
-              
             });
 
             marker.addListener("click", function () {
